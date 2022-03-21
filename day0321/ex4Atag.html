@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        div.a>a:link{     /* 한번도 누르지않은 거를 설정한 색으로 바꿈 */
+            text-decoration: none;
+            color: black;
+            font-size: 20px;
+        }
+        div.a>a:visited{  /* 한번 눌렀던 거를 설정한 색으로 바뀌게 함 */
+            text-decoration: none;
+            color: gray;
+            font-size: 20px;
+
+        }
+        div.a>a:hover{    /* 마우스 커서를 가져다 대면 설정한 색으로 바뀌게 함 */
+            text-decoration: underline;     /* 밑줄 긋기 */
+            color: red;
+            font-size: 20px;
+        }
+
+
+
+        div.b>a{
+            font-family: 'Jua';
+            font-size: 2em;
+            text-decoration: none;
+            color: black;
+        }
+        div.b>a:hover{
+            color: red;
+            text-decoration: underline;
+        }
+
+
+
+        div.c>a{
+            color: black;
+            font-family: 'Lobster';
+            font-size: 2em;
+        }
+        div.c>a:hover{
+            color: forestgreen;
+            font-size: 2em;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="a">
+        <a href="http://www.naver.com">네이버 - 현재창</a><br>
+        <a href="http://www.naver.com" target="_blank">네이버 - 새창</a><br>
+        <!-- 현재 보고있는 창말고 새로운 창이 열림 -->
+        <!-- target으로 새창을 열 때 blank 앞에 _를 꼭 넣어주기 -->
+        <a href="http://www.nate.com">네이트 - 현재창</a><br>
+        <a href="http://www.nate.com" target="_blank">네이트 - 새창</a><br>   
+    </div>
+
+    <div class="b">
+        <a href="../day0318/ex1lottodesign.html" target="_blank">3/18 예제1</a><br>
+        <a href="../day0318/ex1tag.html" target="_blank">3/18 예제2</a><br>
+    </div>
+
+    <div class="c">
+        <a href="ex1Tag.html" target="_blank">3/21 예제1</a><br>
+        <a href="ex2Image.html" target="_blank">3/21 예제2</a><br>
+        <a href="ex3Figure.html" target="_blank">3/21 예제3</a><br>
+    </div>
+    
+
+    <a href="http://cafe.naver.com/zipsy">
+        <img src="../div_img/oneday01.jpg"
+        style="width: 300px;" border="1"
+        title="이문희의 프로그래밍"
+        onmouseover="this.border= 10;"  
+        onmouseout="this.border= 1;"
+    </a>    <!-- body에서 속성으로 넣을 때는 단위가 안들어감 -->
+
+    <a href="http://www.naver.com">
+        <img src="../div_img/beauty3.jpg" width="100"
+        style="border: 1px red solid;">
+    
+    </a>
+</body>
+</html>
