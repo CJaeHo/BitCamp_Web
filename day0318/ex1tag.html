@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>예제 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <style>
+        /* css 영역입니다 */
+        div.a{              /* .은 class를 의미함, div 태그의 a 클래스에만 적용됨 */
+            font-size: 2em; /* 상위태그의 2배..근데 밑에 있는 모든 div들이 똑같이 바뀜.. 
+                            그래서 클래스 선언해서 그안에서 적용시키면 됨*/
+            font-family: 'Gamja Flower';
+            text-shadow: 5px 5px 5px gray;  /* 오른쪽 아래쪽 흐린농도 */
+        }
+        b.a{    /* b태그의 class a에만 적용*/
+            background-color: cadetblue;
+            font-family: 'Jua';
+        }
+        .b{     /* 모든 태그의 class b에 적용,, div랑 b태그의 b클래스에 둘다 적용됨*/
+            border: 5px solid red;  /* 순서는 상관없음 solid는 실선 */ 
+            /* b태그는 글씨에 맞춰서, div는 100%로 설정됨 그래서 따로 너비 높이 설정해줘야함 */
+            
+            font-family: 'Nanum Pen Script';
+        }
+
+        div.c{
+            font-family: 'Lobster';
+            font-size: 3em;
+            width: 300px;       /* 박스만들기의 너비 */
+            height: 100px;      /* 박스만들기의 높이 */
+            border: 4px solid orange;   /* 선의 두께, 종류, 색 */
+
+            /* 1줄일경우 정가운데 보내려면 */
+            line-height: 100px;     /* height와 같은 값을 주기 */
+            text-align: center;     /* 가로 가운데 */
+            margin-bottom: 30px;    /* 요소 아래의 바깥여백,, 밑에 공간 만들기라고 생각하면 됨 */
+            box-shadow: 5px 5px 5px pink;   /* 박스의 그림자넣기,, 오른쪽 아래쪽 흐린농도 */
+            text-shadow: 1px 1px 4px green;
+        }
+
+        /* img태그중에 이름이 img1인거 */
+        img.img1{
+            position: absolute;     /* 절대좌표(왼쪽상단 0,0 고정)    
+            /* 현재 있는 곳을 기점으로 움직이는 relative */
+
+            left: 400px;    /* 좌측 위치 지정 */
+            top: 200px;     /* 윗쪽 위치 지정 */
+        }
+        img.img2{
+            position: absolute;
+            left: 800px;
+            top: 300px;
+            width: 300px;
+            box-shadow: 5px 5px 5px green;
+            border: 5px groove black;
+
+        }
+
+    </style>
+</head>
+<body>
+    <font size="5"  color="cyan">Font Tag Test</font><br>
+    <b style="font-size: 20px;color:magenta;">Have a Nice Day!!</b><br>
+    <b class ="a">Happy Day!!!</b><br><br>
+    <b class ="b">재미있는 자바스크립트!!</b><br>
+    <div class="a">안녕하세요</div>
+    <div class="b">반가워요!!!</div>
+    <div class="c">Nice me too!!</div>
+    <img src="../snoopyAvata/s1.JPG" class="1mg1" title="개똥이" alt="개똥이없음"> 
+    <img src="../div_img/beauty2.jpg" class="img2" title="내방입니다" alt="내방아님">
+
+
+</body>
+</html>
