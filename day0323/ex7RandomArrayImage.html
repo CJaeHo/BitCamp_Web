@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-size: 1.5em;
+            font-family: 'Jua';
+        }
+    </style>
+
+<script>
+    window.onload=function(){
+        // 배열변수 선언
+        var imgarr = new Array();   // 괄호안에 숫자 넣으면 그 숫자 + push 개수 = 이렇게나옴
+        imgarr.push("../img/ani12.gif");
+        imgarr.push("../mainImage/K-043.png");
+        imgarr.push("../음식이미지/갈비립.jpg");
+        imgarr.push("../음식이미지/알밥.jpg");
+        imgarr.push("../snoopyAvata/s5.JPG");
+        imgarr.push("../연예인사진/6.jpg");
+        imgarr.push("../연예인사진/18.jpg");
+        imgarr.push("../jquery_image/m09.jpg");
+
+        console.log(imgarr.length); // 8
+
+        // 배열변수 선언 + 초기값
+        var imgname=["파마소녀","이쁜그릇들","갈비립","알밥","분홍원피스소녀",
+            "한예슬","신세경", "푸른바다"];
+
+        // 변수 선언 안했으니 해주고
+        var photo=document.getElementById("photo");
+        var title=document.getElementById("title");
+
+        // 0~7 사이의 난수 발생시키기
+        var rnd=parseInt(Math.random()*8);
+        // photo에 변경된 imgarr[rnd]의 값을 src에 넣기
+        photo.setAttribute("src",imgarr[rnd]);
+        // title에 텍스트를 넣을껀데 imgname[rnd]의 값에 해당하는 배열을 넣기
+        title.innerText=imgname[rnd];
+
+        document.getElementById("btn1").onclick=function(){
+            // 0~7 사이의 난수 발생시키기
+            var rnd=parseInt(Math.random()*8);
+            // photo에 변경된 imgarr[rnd]의 값을 src에 넣기
+            photo.setAttribute("src",imgarr[rnd]);
+            // title에 텍스트를 넣을껀데 imgname[rnd]의 값에 해당하는 배열을 넣기
+            title.innerText=imgname[rnd];
+        }
+    }
+
+</script>
+
+</head>
+<body>
+    <input type="image" src="../img/chr07.gif" id="btn1">
+    <b style="margin-left: 100px;"><- 얘를 클릭해주세요</b>
+    <br><br>
+    <img src="" id="photo" style="max-width: 400px;">
+    <br><br>
+    <b id="title"></b>
+
+    
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-size: 1.4em;
+            font-family: 'Jua';
+        }
+        /* 박스 두개가 연달아 붙어서 나오기 때문에 왼쪽기준으로 띄우면 됨*/
+        div.left{
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            width: 300px;
+            height: 250px;
+            border: 1px solid black;
+        }
+        div.right{
+            position: absolute; /* 이게 문서의 흐름대로 나오는걸 아예 제거하는 거야. 내가 다 지정하겠다 이거지*/
+            left: 450px;
+            top: 100px;
+            width: 300px;
+            height: 250px;
+            border: 1px solid black;
+            padding: 20px 20px;
+        }
+    </style>
+
+    <script>
+        // 헤드에서 하려면 이거 있어야 함
+        window.onload=function(){
+            // right 박스안에 결과 출력하게 설정하기
+            var out=document.getElementById("right");
+
+            // 버튼 이벤트 만들기
+            document.getElementById("btn1").onclick=function(){
+                // 이름
+                var name=document.getElementById("name");
+                // 2과목의 점수
+                var java=document.getElementById("java");
+                var html=document.getElementById("html");
+                // 총점
+                var sum=parseInt(java.value)+parseInt(html.value); // 이게 더 나음.
+                var sum2=eval(java.value+"+"+html.value);   // 계산기 만들 때는 eval 이거 많이 씀.
+                console.log(sum,sum2);
+                var avg=sum/2;
+
+                // s+= 이렇게 하는 이유는 br이 줄넘김이잖아
+                // 그래서 s에 값을 추가하면서 줄넘기는거야 
+                var s="이 름 : "+name.value+"<br>";
+                s+="자바 점수 : "+name.value+"점<br>";
+                s+="HTML 점수 : "+html.value+"점<br>";
+                s+="합 계 : "+sum+"<br>";
+                s+="평 균 : "+avg+"<br>"; 
+
+                out.innerHTML=s;
+            }
+
+        }
+    </script>
+
+    
+</head>
+<body>
+    <!-- 왼쪽 오른쪽 박스를 나눴어야 했는데 한번에 하려니까 안되던거네.... -->
+    <!-- 왼쪽은 하던거 그대로 하면 되고 오른쪽은 결과 눌렀을 때 다같이 나오게 하면 되는거고-->
+    <!-- 왼쪽 박스 -->
+    <div class="left">
+        <b>이 름</b>
+        <input type="text" id="name" style="width: 100px;">
+        <br>
+        <b>자바</b>
+        <input type="text" id="java" style="width: 100px;">
+        <br>
+        <b>HTML</b>
+        <input type="text" id="html" style="width: 100px;">
+        <br>
+        <button type="button" id="btn1">결 과</button>
+    <!-- 이제 스타일에서 박스 설정 해줄꺼야 -->
+    </div>
+
+    <!-- 오른쪽 박스 -->
+    <div class="right" id="right">
+
+    <!-- 이제 스타일에서 박스 설정 해줄꺼야 -->
+    </div>
+
+</body>
+</html>

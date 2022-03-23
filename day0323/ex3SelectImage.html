@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-size: 1.4em;
+            font-family: 'Jua';
+        }
+
+        #myimg{
+            position: absolute;
+            left: 450px;
+            top: 100px;
+            max-width: 400px;
+            border: 5px groove orange;
+        }
+    </style>
+
+    <script>
+        window.onload=function(){
+            var sel=document.getElementById("selimage");
+            // 값이 얻어지는지 확인하기 위함. 오류없이 초기이미지 값을 얻는지 확인.
+            console.log(sel.value); 
+
+            // body부분에서 id가 myimg인 곳에 위sel에 들어가는 이미지를 넣을꺼야
+            // myimg라는 변수가 먼저 필요할꺼고 
+            // myimg라는 곳에 myimg의 값을 읽어와서 넣을꺼야
+            var myimg=document.getElementById("myimg");
+
+            // myimg의 값은 setAttribute에 의해서 변경될껀데. 
+            // id가 myimg인 src 변수에 sel의 value인 이미지를 넣을꺼야
+            myimg.setAttribute("src",sel.value);
+
+            // 자 어떻게 했냐.. select에서 바꾸면 초기이미지에서 변하지않았어
+            // 그래서 선택하는 각각의 옵션값에 맞게 이미지가 변해야해
+            // 그럴려면 select의 id인 selimage의 초기값을 변경해줘야겠지
+            // 그리고 변경하고 출력해야하니까 우선 초기값을 얻은 selimage를 출력하는 
+            // 함수를 만들어 그다음에 setAttribute로 각 옵션에 맞는 값을 가져오는거지
+            // 근데 잘보면 select의 id가 selimage이고 selimage의 값은 sel인 변수에 가고
+            // sel의 값은 src로 가는데 src의 id가 myimg야 그럼 결국 myimg로 값이 가서 
+            // 변경된 값이 출력이 되는거지
+            // setAttribute로 변경할꺼고 src변수 안에 바뀐 sel값을 넣어서 이걸 myimg에
+            // 넣어서 출력하면 됨. 그럼 결국 selimage를 출력하는게 됨
+            document.getElementById("selimage").onchange=function(){
+                myimg.setAttribute("src",sel.value);    // 얘도 this.value라고 해도 됨
+            
+            // 강사님은 이렇게하심.
+            // sel.onchange=function() 이게 바로위 docu 이거랑 같은거임
+            // sel에 해당하는 함수라고 해놨기 떄문에 this.value로 적어도 값이 도출되는거임 
+            sel.onchange=function(){
+                myimg.setAttribute("src",this.value);
+            }
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div style="margin: 100px 100px;">
+        <select id="selimage" style="width: 180px; text-align: center;">
+            <option value="../연예인사진/12.jpg">박보영</option>
+            <option value="../음식이미지/감자볼.jpg">감자볼</option>
+            <option value="../음식이미지/치즈샌드위치.jpg">치즈샌드위치</option>
+            <option value="../mainImage/k-052.png">커피잔</option>
+            <option value="../mainImage/k-035.png">브런치</option>
+        </select>
+    </div>
+
+    <!-- 여기에 위에 sel의 값을 넣을꺼야 -->
+    <img src="" id="myimg">
+</body>
+</html>

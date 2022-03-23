@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-size: 1.4em;
+            font-family: 'Jua';
+        }
+    </style>
+
+
+</head>
+<body>
+    <!-- 제목이라고 생각해 그냥 -->
+    <h2>이동할 웹사이트를 선택하세요</h2>
+
+    <select id="selgo">
+        <!-- 선택하세요 이거는 선택 안되게끔 하는거-->
+        <option selected disabled hidden>선택하세요</option>
+        <!-- 연산자와는 다르게 value값을 직접 넣음 -->
+        <option value="http://www.naver.com">네이버</option>
+        <option value="http://www.nate.com">네이트</option>
+        <option value="http://www.google.com">구글</option>
+    </select>
+
+    <script>
+        // 자바스크립트에서 페이지 이동할 때 쓰는 함수는 location.href 이거야
+        // 출력할꺼야. id가 selgo인 놈을 읽어서.
+        document.getElementById("selgo").onchange=function(){
+            // alert(this.value);  // 확인 경고창 value값이 뜸
+            
+             // value값에 해당하는 url로 이동하게해줘 location.href야.
+            location.href=this.value;  
+            // 이거는 전에 배운 새창을 열어서 이동하는거 써도 될거같아.
+        }
+    </script>
+
+</body>
+</html>

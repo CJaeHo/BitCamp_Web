@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+
+    <script>
+        var info;
+        window.onload=function(){
+            // msg값을 저장하는 m변수를 만듬
+            var m=document.getElementById("msg");
+            // info값을 저장하는 info변수를 만듬
+            info=document.getElementById("info");
+            // 각 변수에 값을 넣어주고 변수를 이용해서 style변경하는거야
+            n=20;
+            fn="Gamja Flower";  // var 선언을 안하는 이유는.. 자동으로 전역변수로 등록이 됨
+            tcolor="green";
+            // fontSize 이거는 font-size이거랑 같은거임 -빼면 -뒤에글자를 대문자로하면 됨
+            // msg의 값이 들어간 m이 스타일을 변경할껀데 해당하는 태그의 값은 각 변수로
+            m.style.fontSize=n+"px";
+            m.style.fontFamily=fn;
+            m.style.color=tcolor;
+
+            
+            // writeInfo();    // writeInfo의 초기값을 출력해야한다는데 굳이 해야하나...??
+            // 버튼 이벤트(설정)
+            document.getElementById("btn1").onclick=function(){
+                n-=3;
+                if(n<5){
+                    n=5;
+                    alert("더이상은 작게 못합니다");
+                    return;
+                }
+
+                writeInfo();
+                m.style.fontSize=n+"px";
+            }
+
+            document.getElementById("btn2").onclick=function(){
+                n+=3;
+                if(n>70){
+                    n=68;
+                    alert("더이상은 크게 못합니다");
+                    return;
+                }
+                writeInfo();
+                m.style.fontSize=n+"px";
+            }
+
+            // 굵게 체크박스 이벤트(설정)
+            document.getElementById("chkbold").onclick=function(){
+                // alert(this.checked+","+e.target.checked);
+                // 둘다 됨, 체크상태가 true false로 반환되어짐
+
+                if(this.checked){   // 체크되면 true 반환. bold는 굵게
+                    m.style.fontWeight="bold";
+                }
+                else{   // 체크해제되면 true 반환. normal은 기본
+                    m.style.fontWeight="normal";
+                }
+            }
+
+            // 글자색 이벤트(설정)
+            document.getElementById("tcolor").onchange=function(){
+                // alert(this.value);
+                
+                // 위에 tcolor="green"; 이라고 되어있으니까 이거 먼저 바꿔줘야지
+                tcolor=this.value;
+                // tcolor에 this.value; 넣어주면 바뀌는 코드가 tcolor에 저장됨.
+                m.style.color=tcolor;
+                writeInfo();
+            }
+
+        }
+        // 사용자 함수
+        // 사용자 함수는 window 밖에 선언해야 함. 근데 여기서 info라는 변수는 window의 info랑은
+        // 다른 변수가 되어버림. 왜? window안에 있는 info는 var로 지역변수로 만들었기 때문에
+        // 밖에서도 같은 info로 사용하려면 window 밖에 전역변수 var info로 선언해줘야 함
+        function writeInfo(){
+            info.innerHTML="<b style='color:red;'>글꼴 크기:"+n+"px, 글꼴:"+fn+", 글자색:"+tcolor+"</b>"
+        }
+    </script>
+
+
+</head>
+<body>
+
+
+    <button type="button" id="btn1">점점 작게</button>
+    <button type="button" id="btn2">점점 크게</button>
+
+    <!-- 체크박스 -->
+    <input type="checkbox" id="chkbold">굵기
+
+    <!-- 글자색 -->
+    <input type="color" id="tcolor" value="#2e8b57">글자색 변경
+    <!-- value값에 green으로 주면 읽지 못함.. -->
+
+    <br>
+    <div id="info"></div>
+    <hr>    <!-- 밑줄 긋기 -->    
+    <div id="msg">
+        오늘은 즐거운 수요일입니당
+    </div>
+
+</body>
+</html>

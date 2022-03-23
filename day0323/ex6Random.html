@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-size: 1.5em;
+            font-family: 'Jua';
+        }
+    </style>
+</head>
+<body>
+<b>
+    <script>
+        // random 함수
+        for(i=0;i<5;i++){
+            var a=Math.random();
+            document.write(a+"<br>");
+        }
+        
+        // 스크립트니까 document.write를 써서 출력해주는거임
+        document.write("<hr>")
+
+        for(i=0;i<5;i++){   
+            // 자바스크립트에서는 int형이 없기때문에 parseInt로 받으면 됨
+            var a=parseInt(Math.random()*10)+1;
+            document.write(a+"<br>");
+        }
+
+         // 스크립트니까 document.write를 써서 출력해주는거임
+        document.write("<hr>")
+
+        for(i=0;i<5;i++){   
+            // 자바스크립트에서는 int형이 없기때문에 parseInt로 받으면 됨
+            var a=parseInt(Math.random()*100)+1;
+            document.write(a+"<br>");
+        }
+    </script>
+</b>
+</body>
+</html>

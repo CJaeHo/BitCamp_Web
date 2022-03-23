@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+   
+    <style>
+        div.box{
+            width: 600px;
+            height: 300px;
+            background-color: #e0ffff;
+            border: 2px solid #00bfff;
+            padding-top: 20px;/*안쪽 top 의 여백*/
+        }
+ 
+        b.title{
+            font-size: 28px;
+            font-family: 'Jua';
+            margin-left: 160px;
+            color:#00ced1;
+        }
+ 
+        b.date{
+            font-family: 'Gamja Flower';
+            font-size: 1.4em;
+            color: gray;
+            margin-left: 30px;
+        }
+ 
+        div.num{
+            float: left;
+            font-family: 'Jua';
+            font-size: 40px;
+            margin-right: 10px;
+            background-color: #ff69b4;
+            width: 70px;
+            height: 70px;
+            text-align: center;/*가로가운데*/
+            line-height: 70px;/*세로방향가운데*/
+            color: white;
+            border-radius: 100px;/*모서리를 둥글게*/
+        }
+ 
+        div.lotto{
+            width: 500px;
+            height: 120px;
+            background-color: white;
+            margin: 0 auto;/*상위태그의 너비 기준으로 가로방향 가운데보낼때*/
+            padding-left: 50px;
+            padding-top: 40px;
+            /*padding: 40px 50px;*/
+            border-radius: 100px;/*모서리 둥글게*/
+            margin-top: 40px;
+        }
+ 
+        #jungdap{
+            margin-left: 130px;
+            margin-top: 10px;
+            font-size: 17px;
+             font-weight: bold;
+             color: gray;
+        }
+ 
+        #result{
+            margin-top: 30px;
+            font-size: 2em;
+            font-family: 'Gamja Flower';
+            text-align: center;
+            width: 600px;
+            border: 2px solid gray;
+        }
+    </style>
+    <script>
+        var lotto,jungdap,cnt;
+        window.onload=function(){
+            jungdap=[7,15,23,35,41,44];
+            var j="이번주 로또:";
+            for(i=0;i<jungdap.length;i++){
+                j+="["+jungdap[i]+"]&nbsp;";
+            }
+            document.getElementById("jungdap").innerHTML=j;//이번주 로또 출력
+ 
+            writeLotto();//처음 시작하자마자 로또 숫자 출력
+        }
+ 
+        //사용자함수
+        function writeLotto(){
+            //lotto변수 생성
+            lotto=new Array(6);
+            //배열에 1~45사이의 난수발생(중복처리)
+            for(i=0;i<lotto.length;i++){
+                lotto[i]=parseInt(Math.random()*45)+1;
+                for(j=0;j<i;j++){
+                    if(lotto[i]==lotto[j]){
+                        i--;
+                        break;
+                    }
+                }
+            }
+ 
+            //정렬
+            for(i=0;i<lotto.length-1;i++){
+                for(j=i+1;j<lotto.length;j++){
+                    if(lotto[i]>lotto[j]){
+                        var temp=lotto[i];
+                        lotto[i]=lotto[j];
+                        lotto[j]=temp;
+                    }
+                }
+            }
+ 
+            console.log(lotto);
+ 
+            //class "num" 에 배열값 넣기
+            var num=document.getElementsByClassName("num");
+            for(i=0;i<num.length;i++){
+                num[i].innerHTML=lotto[i];
+            }
+ 
+            //정답하고 비교하기
+            cnt=0;
+            for(i=0;i<lotto.length;i++){
+                for(j=0;j<lotto.length;j++){
+                    if(lotto[i]==jungdap[j]){
+                        cnt++;
+                    }
+                }
+            }
+ 
+            var s="맞은갯수 : "+cnt+"개";
+            s+="<span style='color:red;margin-left:30px;'>";
+            if(cnt==6)
+                s+="1등입니다. 축하합니다!!";
+            else if(cnt==5)
+                s+="2등입니다. 축하합니다!!";
+            else if(cnt==4)
+                s+="3등입니다. 축하합니다!!";
+            else
+               s+="꽝입니다!!!!";
+             
+            s+="</span>";
+ 
+            document.getElementById("result").innerHTML=s;
+ 
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <b class="title">901회</b>
+        <b class="date">
+            <script>
+                var date=new Date();
+                var s=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+                document.write(s);
+            </script>
+        </b>
+        <br>
+        <div id="jungdap">111</div>
+ 
+        <div class="lotto">
+            <div class="num">3</div>
+            <div class="num">12</div>
+            <div class="num">25</div>
+            <div class="num">27</div>
+            <div class="num">31</div>
+            <div class="num">43</div>            
+        </div>
+    </div>
+ 
+    <div id="result">111</div>
+</body>
+</html>
