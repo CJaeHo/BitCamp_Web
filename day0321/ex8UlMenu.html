@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    
+    <style>
+        div.a ul{
+            list-style: none;   /* disc 모양 없애는 거 */
+        }
+        div.a>ul>li{
+            float: left;    /* 포함된 데이터가 아니여도 이 뒤에 나오는 건 모두다 적용됨 */
+            font-size: 2em;
+            font-family: 'Jua';
+            width: 180px;
+            height: 80px;
+            border: 2px solid black;    /* 테투리 두께, 종류, 색상 */
+            text-align: center; /* 가로 가운데 정렬,, */
+            line-height: 80px;  /* 세로 가운데 정렬,, 이거는 height랑 같은 값주면 가운데 옴 */
+            margin-right: 5px;  /* 오른쪽 여백 넣기 */
+            cursor: pointer;    /* 칸 안에 마우스 커서가 가면 손모양 커서 나옴 */
+            background-color: #2e8b57;  /* 칸 안에 배경 색 */
+            color: white;   /* 글자 색 */
+        }
+
+        div.a>ul>li:hover{  /* hover,, 마우스 커서가 가르키면 바뀌는 거 */
+            background-color: #ffc0cb;
+            color: black;
+
+        }
+        div.a>ul>li:active{  /* active,, 마우스 커서로 클릭하면 바뀌는 거 */
+            background-color: #ffc0cb;
+            color: black;
+
+        }
+
+
+        div.gun{
+            width: 300px;
+            height: 250px;
+            background-image: url('../jquery_image/gun.png');
+        }
+        div.gun:active{
+            background-position: right bottom;  
+            /* 기준점의 기준이 기본 왼쪽 상단(0,0)인데 
+            그 기준점을 오른쪽 하단으로 바꿔주는 거임 */
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="a" style="width: 100%;">
+        <ul>
+            <li>Home</li>
+            <li>오시는길</li>
+            <li>상품목록</li>
+            <li>장바구니</li>
+            <li>내정보</li>
+        </ul>
+    </div>
+
+    <br style="clear:both;">    <!-- float:left의 속정을 해제하는 방법 -->
+    <h1>총을 클릭해보세요</h1>
+    <div class="gun">
+        
+    </div>
+
+
+
+
+    
+</body>
+</html>

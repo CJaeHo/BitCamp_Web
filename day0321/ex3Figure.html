@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        /* >는 바로 아래의 태그를 의미함. 공백은 하위태그 전체를 의미함. */
+        div.main>figure.a>img{
+            width: 100px;
+            height: 110px;
+
+        }
+        /* 공백일 때 하위태그 전체에서 바로 아래에 있는 해당 class만 적용시킬 수 있음 */
+        div.main figcaption{
+            font-family: 'Gamja Flower';
+            padding-left: 33px;     /* 왼쪽에 공백 만들어서 띄우기 */
+
+        }
+
+        div.main>figure{
+            float: left;    /* 우측 나열 */
+            margin-left: 5px;   /* 추가하지 않은 margin이 기본으로 들어가있어서 설정을 해줘야 할 수도 있음 */
+            
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="main" >
+        <figure class="a">      <!-- 사진과 글씨가 함께 움직임 -->
+            <img src="../연예인사진/2.jpg">
+            <figcaption><b>김우빈</b></figcaption>
+        </figure>
+
+        <figure class="a">      <!-- 사진과 글씨가 함께 움직임 -->
+            <img src="../연예인사진/19.jpg">
+            <figcaption><b>수지</b></figcaption>
+        </figure>
+
+        <figure class="a">      <!-- 사진과 글씨가 함께 움직임 -->
+            <img src="../연예인사진/18.jpg">
+            <figcaption><b>안보여..</b></figcaption>
+        </figure>
+
+        <figure class="a">      <!-- 사진과 글씨가 함께 움직임 -->
+            <img src="../연예인사진/17.jpg">
+            <figcaption><b>신민아</b></figcaption>
+        </figure>
+    </div>
+
+</body>
+</html>

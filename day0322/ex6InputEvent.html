@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-size: 1.4em;
+            font-family: 'Jua';
+        }
+    </style>
+
+</head>
+<body>
+    
+    <h2>통장번호를 입력하세요</h2>
+    <input type="text" id="txtinp1">
+    <hr>
+    <b>keyUp 이벤트:</b>
+    <span id="msg1"></span>
+    <br><br>
+    <b>keypress 이벤트:</b>
+    <span id="msg2"></span>
+
+    <script>
+        // 키보드를 눌렀다가 놓을 떄 바뀌는 onkeyup 그래서 마지막글자까지 읽어옴
+        document.getElementById("txtinp1").onkeyup=function(e){
+            //console.log(this.value);    // 위에 function에 변수 안주고 이렇게 해도되고
+            console.log(e.target.value);    // 변수주고 이렇게 해도 되고..
+            document.getElementById("msg1").innerHTML=this.value;
+        }
+        // 얘는 반대로 마지막 글자가 눌렸을 때라서 마지막 글자는 못읽어옴
+        document.getElementById("txtinp1").onkeypress=function(e){
+            document.getElementById("msg2").innerHTML=e.target.value;
+        }
+    </script>
+
+
+
+
+</body>
+</html>

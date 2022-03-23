@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        /* #은 id를 의미함 */
+        #msg{
+            width: 700px;
+            font-size: 2em;
+            text-align: center;
+            font-family: 'Jua';
+            border: 2px solid orange;
+            height: 60px;
+            line-height: 60px;
+            margin-bottom: 30px;
+        }
+
+        button{
+            width: 150px;
+            height: 40px;
+            line-height: 40px;
+            font-family: 'Jua';
+            font-size: 1.2em;
+            background-color: pink;
+            color: blue;
+        }
+
+        button:hover{   /* 마우스 커서가 가르키면 바뀌는거 */
+            box-shadow: 5px 5px 5px gray;   /* 가르키면 그림자 생김 */
+        }
+    </style>
+
+    <script>
+        // 처음 페이지가 열릴 때 호출되는 윈도우 이벤트
+        window.onload=function(){   // head안에서 주려면 이게 있어야 함.
+            document.getElementById("btn2").onclick=function(){
+            m.innerHTML="<b style='color:magenta;'>head안에 이벤트를 만들었어요!</b>";
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+    
+    <div id="msg">Have a Nice Day!!!</div>
+
+    <button type="button" onclick="hello()">직접함수호출</button>
+    <button type="button" onclick="hello2('다들 안녕!!')">직접함수호출</button>
+    <button type="button" id="btn1">이벤트 생성 #1</button>
+    <button type="button" id="btn2">이벤트 생성 #2</button>
+
+    <script>
+        var m=document.getElementById("msg");
+
+        // 일반 사용자 함수
+        function hello(){
+            // innerText는 <b> 태그도 같이 출력되어짐.
+            m.innerText="<b>첫번째 버튼에서 호출했어요!</b>";
+        }
+
+        function hello2(str){
+            // html이기 떄문에 <b> 태그는 안나옴.
+            m.innerHTML="<b>"+str+"</b>";
+        }
+
+        //id에 이벤트 주기
+        document.getElementById("btn1").onclick=function(){
+            m.innerHTML="<sapn style='color:green;'> 직접 이벤트를 만들었어요!!</span>";
+        }
+    </script>
+
+
+</body>
+</html>

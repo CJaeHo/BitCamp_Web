@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table.a{
+            border-collapse: collapse;  /* border 테투리 사이의 간격이 0이 됨 */
+        }
+        
+        table.b{
+            width: 400px;
+            border: 5px inset gray; /* 이거는 바깥쪽 테두리만 해당 됨 */
+            border-collapse: collapse;
+        }
+
+        table.b td,table.b th{  
+            /* table의 b클래스안에 있는 td, table의 b클래스 안에있는 th */
+            
+            border: 1px solid green;
+        }
+
+        table.b tr{
+            height: 40px;
+        }
+
+        td.bg{
+            /* 배경이미지 */
+            /* 이미지가 배경에 반복되서 나타남 */
+            background-image: url('../img/ani15.gif');
+            /* 이미지 사이즈는 50% 50% 이렇게 퍼센트로도 넣을 수 있음 */
+            background-size: 40px 50%;
+            /* repeat-x는 x열만, repeat-y는 y열 1줄씩만 나타남 */
+            background-repeat: no-repeat;
+            /* 반복되는 이미지가 아닌 1장의 이미지를 원하는 위치로 보내는거 */
+            background-position: right bottom;
+        }
+
+        body{
+            background: url('../img/bg01.gif');
+        }
+    </style>
+
+</head>
+<body>
+    <!-- tr이 행, td가 열 -->
+
+    <!-- style일 때에는 단위가 붙음,, -->
+    <table class="a" border="1" style="width: 300px;">
+        <caption><b>[표 1]</b></caption>
+        <tr height="50" bgcolor="orange">   <!-- 칸안에 색 넣기 -->
+            <td>1번</td>
+            <td align="right" valign="top">2번</td>
+            <td align="middle" valign="bottom">3번</td>     <!-- center==middle -->
+            <td rowspan="2">6번</td>
+        </tr>
+
+        <tr height="50">
+            <td colspan="2" bgcolor="pink">4번</td>
+            <td bgcolor="gray">5번</td>    
+            <!-- 칸을 합치는거는 colspan태그 쓰면되고 
+            나머지칸은 그냥 안에 넣을거만 적어주면 됨 -->
+
+
+
+        </tr>
+    </table>
+    
+    <br>
+    <br>
+
+    <table class="b">
+        <caption><b>[표 2]</b></caption>
+        <tr>
+            <th bgcolor="pink">이름</th>   <!-- th는 기본적으로 굵게, 가운데정렬이 탑재됨 -->
+            <td>박보영</td>
+            <th bgcolor="#ffc">나이</th>
+            <td>23세</td>
+        </tr>
+        <tr>
+            <th bgcolor="cyan">주소</th>
+            <td colspan="3"></td>
+        </tr>
+        <tr style="height: 200px">  <!-- style이니까 단위 적어주고 -->     
+            <!-- 위에 table.b tr에서 높이가 이미 입력되어있기 때문에 적용을 시키려면 같은 style 형태로 넣어줘야 함 -->
+            <th>사진</th>
+            <td colspan="3" class="bg">     
+                <!-- 이 칸에 사진을 넣을꺼니까 여기에 속해있어야되고 -->
+                <img src="../연예인사진/14.jpg" width="100">
+            </td>
+        </tr>
+    </table>
+
+
+
+    <br>
+    <br>
+
+
+
+
+
+
+
+    <table class="t" border="1" style="width:300px;">
+        <caption><b>[표 3]</b></caption>
+        <tr height="50">
+            <td rowspan="3">1번</td>
+            <td colspan="3">2번</td>
+        </tr>
+
+        <tr height="50">
+            <td colspan="2">3번</td>
+            <td rowspan="3">4번</td>
+        </tr>
+        
+        <tr height="50">
+            <td colspan="2">5번</td>
+        </tr>
+
+        <tr height="50">
+            <td colspan="3">6번</td>
+        </tr>
+    
+    </table>
+</body>
+</html>

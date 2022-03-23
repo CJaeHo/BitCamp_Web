@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        span.day{
+            font-size: 2em;
+            font-family: 'Gamja Flower';
+            color: red;
+        }
+
+        div.time{
+            position: absolute;
+            left: 200px;
+            top: 300px;
+            font-size: 40px;
+            font-family: 'Jua';
+            border: 10px solid gold;
+            text-align: center;
+            width: 500px;
+            height: 100px;
+            line-height: 100px;
+            box-shadow: 8px 8px 5px gray;
+        }
+    </style>
+
+
+</head>
+<body>
+    <script>
+        // 현재 날짜와 시간 출력하기
+        var date=new Date();
+        // date.getMonth()는 0~11의 값을 가지고 있기 때문에 +1을 해줘야 12월까지 표현 됨
+        var day="<span class='day'>현재 날짜 : "+date.getFullYear()+"-"+0+(date.getMonth()+1)
+            +"-"+date.getDate()+"</span>";
+        // 브라우저로 바로 출력
+        document.write(day);
+    </script>
+
+    <!-- hr 선도 스타일 변경 가능 -->
+    <hr align="left" width="500" size="5" color="magenta">
+
+    <span class="day">
+        현재 시간 : 
+        <script>
+            var s=date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+            document.write(s);
+        </script>
+    </span>
+
+    <div class="time" id="time">    
+        <!-- ID는 고유의 값이라 한번쓰는건데 앞에 class선언을해서 여러번 쓸 수 있는거임-->
+
+    </div>
+    <script>
+        // 1초마다 반복해서 함수 실행
+        setInterval(function(){
+            var date2=new Date();
+            var s2=date2.getHours()+":"+date2.getMinutes()+":"+date2.getSeconds();
+            document.getElementById("time").innerHTML=s2;
+        },1000);    // 1000이 1초임, 1초마다 function 안의 코드 실행
+        // document.getElementById("time")이거는 지금 배열 타입이야..
+        // 또 설명해주실꺼야...ㅋㅋ...
+    </script>
+
+</body>
+</html>

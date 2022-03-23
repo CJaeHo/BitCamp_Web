@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-size: 1.4em;
+            font-family: 'Jua';
+        }
+    </style>
+
+
+</head>
+<body>
+    
+    <button type="button" id="btn1">점점 작게</button>
+    <button type="button" id="btn2">점점 크게</button>
+    <br><br>
+    <img src="../연예인사진/15.jpg" width="300" id="photo" border="2">
+
+    <script>
+        var p=document.getElementById("photo");
+
+        document.getElementById("btn1").onclick=function(){
+            // 현재 width 값을 먼저 얻기
+            var w=p.getAttribute("width");
+            console.log("빼기:"+typeof(w)); // typeof: 타입출력
+            // 빼주고
+            w-=10;
+            // 변경하기
+            p.setAttribute("width",w);
+        }
+
+        document.getElementById("btn2").onclick=function(){
+            // parseInt로 string을 정수값으로 변환
+            var w=parseInt(p.getAttribute("width"));
+            // 더하기는 String으로 더하기때문에 Int로 변환해주고 더해줘야함.
+            w+=10;
+            // 변경하기
+            p.setAttribute("width",w);
+        }
+    </script>
+
+</body>
+</html>

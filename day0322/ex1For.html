@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img.photo{
+            width:150px; 
+            height: 170px;
+            margin-right: 10px;
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+<body>
+    <h2>간단한 for문 연습</h2>
+    <script>
+        for(var i=1; i<=10; i++){
+            document.write(i+"&nbsp;");
+        }    
+        document.write("<br>");
+
+        for(i=1; i<=20; i+=5){
+            document.write("<h3>"+i+"</h3>");
+        }
+
+
+
+    </Script>
+
+    <h2>20개의 연예인 사진 출력하기(한줄에 5개씩)</h2>
+
+    <script>
+        var s ="";
+        for(i=1; i<=20; i++){
+            s+="<img src='../연예인사진/"+i+".jpg' class='photo'>";
+            if(i%5==0)
+            s+="<br><br>";
+        }
+        document.write(s);
+
+
+    </script>
+
+
+</body>
+</html>

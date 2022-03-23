@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        img.photo{
+            width: 170px;
+            border: 2px solid pink;
+            margin-right: 5px;
+        }
+    </style>
+
+
+</head>
+<body>
+    
+    <h2>자바스크립트에서의 배열 공부하기</h2>
+
+    <script>    // 자바스크립트는 배열 선언할 때 [] 필요없음
+        var flowers=["장미꽃","안개꽃","국화꽃","다알리아","후리지아"];
+        var colors = new Array("red","blue","green","pink","orange");
+        // 이런식으로 넣어주면 됨.
+
+        //크롬 콘솔에서 확인가능. 라이브서버에서 마우스 오른쪽클릭 > 검사 > console > 5 5 확인
+        console.log(flowers.length);
+        console.log(colors.length);
+
+        var s="";
+        for(i=0; i<flowers.length; i++){
+            s+="<h3 style='color:"+colors[i]+";'>"+flowers[i]+"</h3>";
+        }
+        document.write(s);
+
+    </script>
+
+    <h2>배열에 이미지 넣기</h2>
+    <script>
+        var imgarr = new Array(5);
+        imgarr[0]="../img/ani12.gif";
+        imgarr[1]="../mainImage/K-043.png";
+        imgarr[2]="../음식이미지/갈비립.jpg";
+        imgarr[3]="../음식이미지/알밥.jpg";
+        imgarr[4]="../soopyAvata/s5.JPG";
+
+        for(i=0; imgarr.length; i++){
+            document.write("<img src="+imgarr[i]+" class='photo'>")
+        }
+    </script>
+
+    <h2>img 태그에 직접 이미지 넣기</h2>
+    <img src="" name="myimg" width="100">
+    <img src="" name="myimg" width="100">
+    <script>
+        // 태크에 같은 name이 있을경우 배열형태로 인식하게 됨.
+        myimg[0].src=imgarr[2];
+        myimg[1].src=imgarr[4];
+    </script>
+
+
+
+</body>
+</html>

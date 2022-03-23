@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-size: 1.4em;
+            font-family: 'Jua';
+        }
+    </style>
+
+</head>
+<body>
+    
+    <img src="../음식이미지/독일족발.jpg" id="food" width="300" border="1">
+    <br><br>
+    <button type="button" id="btn1">기본정보출력</button>
+    <div id="msg">기본정보 출력할 곳</div>
+    <br>
+    <button type="button" id="btn2">이미지 변경</button>
+    <button type="button" id="btn3">크기 변경</button>
+    <button type="button" id="btn4">테두리선 변경</button>
+    <button type="button" id="btn5">원래대로 변경</button>
+
+    <script>
+        var f=document.getElementById("food");
+
+        document.getElementById("btn1").onclick=function(){
+            var s="이미지명:"+f.getAttribute("src")+"<br>";
+            s+="width: "+f.getAttribute("width")+"<br>";
+            s+="border: "+f.getAttribute("border");
+            // 가져오는건 get 바꾸는건 set
+
+            document.getElementById("msg").innerHTML=s;
+        }
+        document.getElementById("btn2").onclick=function(){
+            // 이미지 변경
+            f.setAttribute("src","../음식이미지/짜장라면.jpg");
+        }
+        document.getElementById("btn3").onclick=function(){
+            // width:400으로 변경
+            f.setAttribute("width",400);
+        }
+        document.getElementById("btn4").onclick=function(){
+            // border를 10으로 변경
+            f.setAttribute("border",10)
+        }
+        document.getElementById("btn2").onclick=function(){
+            // 원래대로 변경
+            f.setAttribute("src","../음식이미지/독일족발.jpg");
+            f.setAttribute("width",300);
+            f.setAttribute("border",1)
+        }
+    </script>
+
+
+
+
+
+
+</body>
+</html>

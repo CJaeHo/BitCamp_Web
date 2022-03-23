@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+
+    <style>
+        #box{
+            width: 800px;
+            height: 800px;
+            border: 2px solid black;
+            border-radius: 5px;
+            
+        }
+        #msg{
+            width: 400px;
+            font-size: 1.5em;
+            text-align: center;
+            font-family: 'Jua';
+            border: 2px solid black;
+            border-radius: 5px;
+            height: 400px;
+            line-height: 400px;
+
+        }
+
+        #a{
+            font-family: 'Jua';
+            font-size: 1.5em;
+            margin-right: 20px;
+            margin-left: 20px;
+            margin-top: 20px;
+            text-align: center;
+            
+        }
+
+        #btn{
+            width: 200px;
+            height: 60px;
+            line-height: 60px;
+            font-family: 'Jua';
+            font-size: 1.2em;
+            background-color: lightgray;
+            color: black;
+            border: 2px solid green;
+            border-radius: 8px;
+            margin-left: 20px;
+        }
+        button:hover{   /* 마우스 커서가 가르키면 바뀌는거 */
+            box-shadow: 5px 5px 5px gray;   /* 가르키면 그림자 생김 */
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="box">
+        <b id="a">이름</b>
+        <input type="text" id="txtname" style="width: 100px; height: 40px;">
+        &nbsp;&nbsp;&nbsp;
+        <br><br><br><b id="a">자바</b>
+        <input type="text" id="txtjava" style="width: 100px; height: 40px;">
+        &nbsp;&nbsp;&nbsp;
+        <br><br><br><b id="a">HTML</b>
+        <input type="text" id="txthtml" style="width: 100px; height: 40px;">
+        &nbsp;&nbsp;&nbsp;
+        <br><br><br><button type="button" id="btn">결과</button>
+        <br><br><br><div id="msg">결과확인</div>
+    </div>
+    <script>
+
+        
+
+        // 버튼 이벤트
+        document.getElementById("btn").onclick=function(){
+            // 변수 만들어주고
+            var name=document.getElementById("txtname");
+            var java=document.getElementById("txtjava");
+            var html=document.getElementById('txthtml');
+            var m=document.getElementById('msg');
+
+            // 이름 입력 안했을 때 확인창
+            if(name.value==''){
+                alert("이름을 입력해주세요");
+                name.focus();   // 이름 입력칸에 포커스 잡아주고
+                return; // 리턴으로 현재 함수 종료
+            }
+            if(java.value==''){
+                alert("자바의 점수를 입력해주세요");
+                java.focus();   // 자바 입력칸에 포커스 잡아주고
+                return; // 리턴으로 현재 함수 종료
+            }
+
+            if(html.value==''){
+                alert("HTML의 점수를 입력해주세요");
+                html.focus();   // HTML 입력칸에 포커스 잡아주고
+                return; // 리턴으로 현재 함수 종료
+            }
+            if(isNaN(java.value)){
+                alert("숫자만 입력해주세요")
+                java.value='';
+                java.focus;
+                return;
+            }
+            if(isNaN(html.value)){
+                alert("숫자만 입력해주세요")
+                html.value='';
+                html.focus;
+                return;
+            }
+            // var m = document.getElementById("msg");
+            // m.innerHTML="<h1> 이름 : "+name.value+"</h1>"
+            // var m = document.getElementById("msg");
+            // m.innerHTML="<h2> 자바 : "+java.value+"</h1>"
+            // var m = document.getElementById("msg");
+            // m.innerHTML="<h3> HTML : "+html.value+"</h1>"
+            // m.innerHTML="<h4> 총점 : "+total+"</h1>"
+            // m.innerHTML="<h5> 평균 : "+avg+"</h1>"
+        }
+        
+        
+
+
+    </script>
+
+
+
+
+
+
+
+
+    </body>
+    </html>
