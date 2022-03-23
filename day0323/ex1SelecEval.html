@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-size: 1.4em;
+            font-family: 'Jua';
+        }
+    </style>
+
+</head>
+<body>
+
+    <div style="margin-left: 300px;">
+        <input type="text" id="su1" style="width: 100px;">
+        <!-- select은 말그대로 선택하는 옵션을 주는거 
+             지금 연산기호 넣었으니 선택해서 계산되게 하는거지 지금은 
+             이거도 추가 설정할 수 있음 -->
+        <select id="selop" style="width: 110px;">
+            <!-- selected disabled hidden 이거는 선택이 안되게끔 해주는 거
+                 처음에 연산자로 나와있는데 눌러보면 연산자를 고르지 못하게 되어있음 -->
+            <option selected disabled hidden>연산자</option>
+            <option>+</option>
+            <option>-</option>
+            <option>*</option>
+            <option>/</option>
+        </select>
+        <input type="text" id="su2" style="width: 100px;">
+        <br><br>
+        <!-- msg는 su1,su2가 계산된 값을 출력하는 공간이 될꺼임-->
+        <div id="msg"></div>
+    </div>
+    
+    <script>
+        // 이거는 마우스클릭(onclick)이 아니라 onchange..
+        // 마우스 클릭해서 연산기호를 변경하거나 키보드 방향키로도 변경 가능
+        document.getElementById("selop").onchange=function(){
+            // alert(this.value);   // 연산자 << 이게 골라지나 안골라지나 보려고 해본거
+            var su1=document.getElementById("su1").value;
+            // get이니까 su1,2을 읽을꺼야. input에 적힌 value(값)을
+            var su2=document.getElementById("su2").value;
+            var op=this.value;  // 연산자
+
+            // su1과 su2에 값이 없으면..
+            if(su1=='' || su2==''){
+                // 경고 확인창 뜨게 하는거 alert
+                alert("두개의 숫자를 모두 입력 후 \n연산자를 선택해주세요");
+                return;     // 현재 함수 종료
+            }
+
+            // 이번엔 입력된 값이 숫자인지 아닌지
+            if(isNaN(su1) || isNaN(su2)){
+                alert("입력칸에 숫자로 입력 후 \n연산자를 선택해주세요")
+                return;
+            }
+
+            // 연산 후 결과 출력
+            // result에 입력된 결과 값이 들어감
+            var result=eval(su1+op+su2);
+            // 자 출력할껀데. msg를 읽을꺼야. msg안에 su1 연산자 su2 = 결과 이거를.
+            document.getElementById("msg").innerHTML=su1+op+su2+"="+result;
+        }
+    </script>
+
+</body>
+</html>

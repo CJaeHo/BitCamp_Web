@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-size: 1.4em;
+            font-family: 'Jua';
+        }
+
+        #msg{
+            position: absolute;
+            left: 200px;
+            top: 100px;
+            width: 500px;
+            height: 150px;
+            /* line-height는 1줄일때만 가능 */
+            border: 10px inset pink;
+            font-size: 30px;
+            padding-top: 50px;
+            text-align: center;
+        }
+        
+        div.info{
+            position: absolute;
+            top: 300px;
+            left: 200px;
+            text-align: center;
+        }
+
+
+    </style>
+
+</head>
+<body>
+    
+    <div id="msg">
+        Have a Nice Day!!<br>
+        행복한 하루되세요!!!
+    </div>
+
+    <div class="info">
+        <h3>배경색을 선택하세요</h3>
+        <!-- 여기서 name을 다 주는 이유는 4개중에 1개만 선택될 수 있게끔 하기위함 
+            name을 다 안주면 중복체크가 되어버림 -->
+        <input type="radio" name="bcolor" class="bcolor" value="#7fffd4">그린색
+        <input type="radio" name="bcolor" class="bcolor" value="#ffb6c1">핑크색
+        <input type="radio" name="bcolor" class="bcolor" value="#48d1cc">하늘색
+        <input type="radio" name="bcolor" class="bcolor" value="#ffffff" checked>흰색
+        <!-- checked를 입력하면 그 색이 기본으로 설정됨 -->
+        <br><br>
+        <h3>글꼴을 선택하세요</h3>
+        <!-- 이것도 마찬가지로 4개중에 1개 선택, Jua를 기본 글꼴로 설정 -->
+        <input type="radio" name="font" class="font" value="Jua" checked>Jua
+        <input type="radio" name="font" class="font" value="Gamja Flower">Gamja Flower
+        <input type="radio" name="font" class="font" value="Lobster">Lobster
+        <input type="radio" name="font" class="font" value="Nanum Pen Script">Nanum Pen Script
+        <br><br>
+        <b>테두리선 선택 : </b>
+        <select id="selline">
+            <option>solid</option>
+            <option selected>inset</option> <!-- 기본 선으로 설정 -->
+            <option>dotted</option>
+            <option>dashed</option>
+            <option>double</option>
+            <option>groove</option>
+        </select>
+        <br><br>
+        <button type="button" id="btn1"
+        style="width: 200px; height: 50px; margin-left: 150px;">적용하기</button>
+    </div>
+
+    <script>
+        // 변경할 곳을 읽어오기 -> have a nice day를 읽어옴
+        var m=document.getElementById("msg");
+
+        // 버튼 이벤트(설정)
+        document.getElementById("btn1").onclick=function(){
+
+            var bcolor1=document.getElementsByClassName("bcolor");  // 배열타입
+            // console.log(bcolor1.length);    // 4 출력
+            // 위아래 둘중에 하나로 하면 됨
+            // var bcolor2=document.getElementsByName("bcolor");   // 배열타입
+            // console.log(bcolor2.length);    // 4 출력
+
+            // // 얘는 그냥 이런거도 있다 알려주려고 한거
+            // var tags=document.getElementsByTagName("input");    // 모든 input 태그-배열타입
+            // console.log(tags.length);   // 8 출력
+
+            for(i=0; i<bcolor1.length; i++){    // bcolor1를 배열로 받아서 for문이 가능함
+                // console.log(bcolor1[i].value+","+bcolor1[i].checked);
+                if(bcolor1[i].checked){ 
+                    // bcolor[i]가 true면 m(msg)안에 스타일을 백그라운드컬러를 그걸로 바꿈
+                    m.style.backgroundColor=bcolor1[i].value;
+                }
+            }
+            
+            var font1=document.getElementsByClassName("font");  // 배열타입
+            // console.log(font1.length);    // 4 출력
+
+            for(i=0; i<font1.length; i++){
+                if(font1[i].checked){
+                    m.style.fontFamily=font1[i].value;
+                }
+            }
+
+            var line=document.getElementById("selline").value;  // 배열타입
+            // console.log(line1.length);    // 4 출력
+
+            m.style.borderStyle=line;
+
+        
+        }
+    </script>
+
+</body>
+</html>

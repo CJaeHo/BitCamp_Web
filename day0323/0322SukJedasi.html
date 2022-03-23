@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+         body *{ /* body의 모든 하위태그들을 말함 */
+            font-size: 1.4em;
+            font-family:'Jua';
+         }
+
+         div.left{
+             position: absolute;
+             left: 100px;
+             top: 100px;
+             width: 300px;
+             height: 200px;
+             text-align: center;
+             border: 1px solid black;
+             border-radius: 5px;
+         }
+         div.right{
+             position: absolute;
+             left: 450px;
+             top: 100px;
+             width: 300px;
+             height: 200px;
+             text-align: center;
+             border: 1px solid black;
+             border-radius: 5px;
+         }
+
+
+    </style>
+    <script>
+        window.onload=function(){
+            var out=document.getElementById("right");
+
+            document.getElementById("btn1").onclick=function(){
+                var name=document.getElementById("name");
+                var java=document.getElementById("java");
+                var html=document.getElementById("html");
+
+                var sum=parseInt(java.value)+parseInt(html.value);
+                var avg=sum/2;
+
+                var s="이 름 : "+name.value+"<br>";
+                s+="자 바 : "+java.value+"점<br>";
+                s+="HTML : "+html.value+"점<br>";
+                s+="총 점 : "+sum+"<br>";
+                s+="평 균 : "+avg+"<br>";
+
+                out.innerHTML=s;
+            }
+      }
+</script>
+
+
+</head>
+<body>
+
+    <div class="left">
+        <b>이 름</b>
+        <input type="text" id="name" style="width: 100px;">
+        <br>
+        <b>자 바</b>
+        <input type="text" id="java" style="width: 100px;">
+        <br>
+        <b>HTML</b>
+        <input type="text" id="html" style="width: 100px;">
+        <br>
+        <!-- button은 스타일 설정할 필요가 없네 -->
+        <button type="button" id="btn1">결 과</button>
+    </div>
+    
+    <div class="right" id="right">
+    <!-- 오른쪽에 결과를 도출해야하니까 id가 필요함 -->
+    <!-- 이정도 설정해주고 헤드로가서 style로 꾸며보자 -->
+    </div>
+
+
+
+</body>
+</html>
