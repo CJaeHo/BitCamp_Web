@@ -101,7 +101,7 @@
                 }
             }
  
-            //정렬
+            // 오름차순 정렬.. 오른쪽으로 갈수록 커짐
             for(i=0;i<lotto.length-1;i++){
                 for(j=i+1;j<lotto.length;j++){
                     if(lotto[i]>lotto[j]){
@@ -120,7 +120,7 @@
                 num[i].innerHTML=lotto[i];
             }
  
-            //정답하고 비교하기
+            //정답하고 비교하기...로또가 나오고나서 비교를 해야하니까 위치해야하는 곳은 여기..
             cnt=0;
             for(i=0;i<lotto.length;i++){
                 for(j=0;j<lotto.length;j++){
@@ -129,7 +129,7 @@
                     }
                 }
             }
- 
+            // 반드시 s+=를 해줘야하는게 s=만 해주면 앞에 맞은갯수가 사라지고 몇등입니다!! 이거만 나옴
             var s="맞은갯수 : "+cnt+"개";
             s+="<span style='color:red;margin-left:30px;'>";
             if(cnt==6)
@@ -153,8 +153,11 @@
         <b class="title">901회</b>
         <b class="date">
             <script>
+                // 현재의 날짜와 시간 출력하기
                 var date=new Date();
+                // date.getMonth()는 0~11의 값을 가지고 있기 때문에 +1을 해줘야 12월까지 표현 됨
                 var s=date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+                // 브라우저로 바로 출력
                 document.write(s);
             </script>
         </b>
