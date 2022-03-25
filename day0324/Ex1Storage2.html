@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2rem;  
+            /*  rem은 최상위태그가 기준, em은 상위태그가 기준이 됨
+                쉽게말하면 em은 은행 복리 생각하면됨. 맨위에의 1.2배가 바로 아래
+                그 다음 아래는 1.2배 받은 크기에 1.2배 이렇게 계속 점점 커짐 
+            */
+        }
+    </style>
+</head>
+<body>
+    <button type="button" id="btnadd">저 장</button>
+    <b>Key값(영문) : </b><input type="text" id="mykey" style="width: 100px;" >
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <b>저장할 값 : </b><input type="text" id="mydata" style="width: 100px;">
+    <button type="button" id="btndel">삭 제</button>
+    <button type="button" id="btnalldel">전체 삭제</button>
+    <button type="button" id="btnview">내용보기</button>
+    <div id="view"></div>
+
+    <script>
+        document.getElementById("btnadd").onclick=function(){
+            // localStorage.setItem("name","이효리");
+            // localStorage.age="23세";
+            // localStorage["addr"]="서울강남";
+
+            mykey=document.getElementById("mykey").value;
+            mydata=document.getElementById("mydata").value;
+
+            localStorage.setItem(mykey,mydata);
+        }
+
+        document.getElementById("btndel").onclick=function(){
+            mykey=document.getElementById("mykey").value;
+            localStorage.removeItem(mykey);
+        }
+        document.getElementById("btnalldel").onclick=function(){
+            localStorage.clear();
+        }
+        document.getElementById("btnview").onclick=function(){
+            var s="로컬스토리지 값 가져오기 <br>";
+            s+="name : "+localStorage.getItem("name")+"<br>";
+            s+="age : "+localStorage.getItem("age")+"<br>";
+            s+="addr : "+localStorage.getItem("addr")+"<br>";
+            s+="id : "+localStorage.getItem("id")+"<br>";
+        
+            for(i=0; i<localStorage.length; i++){
+                var k=localStorage.key(i);
+                s+=k+" : "+localStorage.getItem(k)+"<br>";
+            }
+            document.getElementById("view").innerHTML=s;
+        
+        }
+    </script>
+
+</body>
+</html>

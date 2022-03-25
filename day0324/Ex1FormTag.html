@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+        }
+
+        table.ta{
+            border: 2px solid gray;
+            border-collapse: collapse;
+        }
+
+        table.ta th, table ta td{
+            border: 1px solid #ccc;
+        }
+        /*
+        리엑트에서는 thead를 적어줘야 에러안남 
+        제목부분
+        table.ta thead tr{
+            background-color: cadetblue;
+            color: white;
+            height: 30px;
+        }
+        내용부분 
+        table.ta tbody tr{
+            height: 30px;
+        }
+        */
+
+        table.ta th{
+            background-color: cadetblue;
+            color: white;
+        }
+        table.ta tr{
+            height: 40px;
+        }
+    </style>
+
+    <script>
+        window.onload=function(){
+            // 여기에 만들어놓은 이유가 버튼누르면 호출이 되어야하기 떄문에 이 위치에 있어야함.
+            var pro=document.getElementById("pro"); // 얘가 progress
+            var prov=document.getElementById("provalue");   // 얘가 b태그
+
+            // 감수성
+            document.getElementById("btnpro").onclick=function(){
+                // 1~100사이의 난수 발생
+                var rnd=parseInt(Math.random()*100)+1;
+                var n=0;    // 초기화
+                var interval=setInterval(function(){    // settimeout은 딱 한번 호출됨
+                    n++;
+                    pro.value=n;    // 프로그레스바에 값을 출력함 == 감수성 바에 n의 숫자만큼 색이 참
+                    prov.innerHTML=n;   // n의 값을 지금 0인 숫자에 호출시키는거
+                    if(n==rnd){
+                        // interva 멈춤.. n의 값과 난수가 같으면 멈추도록해서 감수성의 숫자를 나타내게됨
+                        clearInterval(interval);
+                    }
+                },10);  // 10이면 0.01초마다 호출하게 됨
+            }
+
+            // 출력 div
+            var r=document.getElementById("result");
+            // 결과버튼 이벤트
+            document.getElementById("btnresult").onclick=function(){
+                var s="<h3 style='margin-left: 50px;'>개인정보</h3><br>"
+                // 이렇게 입력 받은걸 바로 출력할 수도 있음
+                s+="이 름 : "+document.getElementById("txtname").value+"<br>"
+                s+="비 번 : "+document.getElementById("txtpass").value+"<br>"
+
+                // 혈액형
+                var blood=document.getElementsByName("blood");
+                for(i=0; i<blood.length; i++){
+                    if(blood[i].checked){
+                        s+="혈액형 : "+blood[i].value+"형<br>";
+                    }
+                }
+
+                // 운전면허
+                var cblic=document.getElementById("cblic");    // value값을 얻는게 아니니까 ByID로!!
+                s+="운전면허 : ";
+                if(cblic.checked)
+                    s+="있음<br>";  
+                    // s+="운전면허 : "+있음+"<br>"; 이렇게는 안되네..왜지..?? 똑같은거 아닌가??
+                    // 아..value값을 받는게 아니여서 그런건가..? 음...
+                else
+                    s+="없음<br>";
+                
+                // 취미
+                var n=0;
+                var hobby=document.getElementsByName("hobby");  // value값을 얻어야되니까 classname이나 name으로
+                s+="취 미 : ";
+                for(i=0; i<hobby.length; i++){
+                    if(hobby[i].checked){
+                        n++;
+                        s+="["+hobby[i].value+"]&nbsp;";
+                    }
+                }
+                if(n==0){       
+                    // for문에서 else로 하는게 아니라 체크가 안되어있으면 n은 0일테니까 
+                    // 따로 나와서 if문으로 해주기.
+                    s+="없음";
+                }
+                s+="<br>";  
+                // for문이랑 밑에 if문 끝나고 한줄 띄우기 for문 안에 넣으면 if문 끝날 때 <br>이 없고
+                // if문 안에 넣으면 for문 끝날 때 <br>이 없으니 아예 맨 밑에 넣어주기.
+
+
+                // 생년월일
+                s+="생년월일 : "+document.getElementById("birth").value+"<br>";
+                // 얘는 내가 선택한 value값을 가져오는거라서 Id로 한번에 해결하기.
+
+                // 감수성
+                s+="감수성 : "+pro.value+"<br>";
+                // 얘도 확인버튼 누른거에 대한 value값을 가져오기만 하면 되기 때문에 간단하게 해결하기.
+                
+                r.innerHTML=s;
+            }
+
+
+        }
+    </script>
+
+</head>
+<body>
+    
+    <h3 style="margin-left: 200px;">폼 태그들 연습</h3>
+    <table class="ta">
+        <caption><b>개인정보</b></caption>
+        <tr>
+            <th width="100">이 름</th> <!-- 기본으로 가운데정렬, 굵게 있음 -->
+            <td width="300">
+                <input type="text" id="txtname" style="width: 120px;" placeholder="input name">
+            </td>
+        </tr>
+        <tr>
+            <th>비밀번호</th> <!-- 기본으로 가운데정렬, 굵게 있음 .. 위에랑 같으면 밑에는 너비 안줘도 적용됨-->
+            <td>
+                <input type="password" id="txtpass" style="width: 120px;" placeholder="input pass">
+            </td>
+        </tr>
+        <tr>
+            <th>혈액형</th> <!-- 기본으로 가운데정렬, 굵게 있음 .. 위에랑 같으면 밑에는 너비 안줘도 적용됨-->
+            <td>
+                <input type="radio" name="blood" value="A">A형&nbsp;&nbsp;
+                <input type="radio" name="blood" value="B" checked>B형&nbsp;&nbsp;
+                <input type="radio" name="blood" value="O">O형&nbsp;&nbsp;
+                <input type="radio" name="blood" value="AB">AB형&nbsp;&nbsp;
+            </td>
+        </tr>
+        <tr>
+            <th>운전면허</th> <!-- 기본으로 가운데정렬, 굵게 있음 .. 위에랑 같으면 밑에는 너비 안줘도 적용됨-->
+            <td>
+                <input type="checkbox" id="cblic">운전면허
+            </td>
+        </tr>
+        <tr>
+            <th>취미</th> <!-- 기본으로 가운데정렬, 굵게 있음 .. 위에랑 같으면 밑에는 너비 안줘도 적용됨-->
+            <td>
+                <input type="checkbox" name="hobby" value="게임">게임&nbsp;&nbsp;
+                <input type="checkbox" name="hobby" value="낚시">낚시&nbsp;&nbsp;
+                <input type="checkbox" name="hobby" value="여행">여행&nbsp;&nbsp;
+                <input type="checkbox" name="hobby" value="음악감상">음악감상&nbsp;&nbsp;
+            </td>
+        </tr>
+        <tr>
+            <th>생년월일</th> <!-- 기본으로 가운데정렬, 굵게 있음 .. 위에랑 같으면 밑에는 너비 안줘도 적용됨-->
+            <td>
+                <input type="date" id="birth" value="2022-01-01">
+            </td>
+        </tr>
+        <tr>
+            <th>감수성</th>
+            <td>
+            <progress id="pro" value="0" min="0" max="100"></progress>
+            <button type="button" id="btnpro">확인</button>
+            &nbsp;&nbsp;&nbsp;
+            <b id="provalue">0</b>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2">
+                <button type="button" style="width: 150px;" id="btnresult">결과출력</button>
+            </th>
+        </tr>
+    </table>
+
+    <br><br>
+
+    <div id="result" style="width: 360px; height: 300px; border: 1px solid gray; padding: 20px 20px;">111</div>
+
+</body>
+</html>

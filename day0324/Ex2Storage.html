@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2rem;  
+            /*  rem은 최상위태그가 기준, em은 상위태그가 기준이 됨
+                쉽게말하면 em은 은행 복리 생각하면됨. 맨위에의 1.2배가 바로 아래
+                그 다음 아래는 1.2배 받은 크기에 1.2배 이렇게 계속 점점 커짐 
+            */
+        }
+    </style>
+
+    <style>
+        #main{
+            width: 300px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 30px;
+            border: 2px solid gray;
+            margin-top: 30px;
+        }
+    </style>
+
+
+    <script>
+        window.onload=function(){
+            var id,tcolor,bcolor, msg;
+            id=localStorage.getItem("id");
+            tcolor=localStorage.getItem("tcolor")
+            bcolor=localStorage.getItem("bcolor")
+
+            m=document.getElementById("main");
+
+
+            if(id==undefined || id==null){
+                msg="먼저 로그인 하세요";
+            }else{
+                msg=id+"님이 로그인 중입니다";
+            }
+            m.innerHTML=msg;
+
+            if(tcolor==undefined || tcolor==null){
+                m.style.color="red";
+            }else{
+                m.style.color=tcolor;
+            }
+            if(bcolor==undefined || bcolor==null){
+                m.style.backgroundColor="#fff";
+            }else{
+                m.style.backgroundColor=bcolor;
+            }
+
+
+            document.getElementById("btnlogin").onclick=function(){
+                var myid = document.getElementById("id").value;
+                localStorage.id=myid;
+                msg=myid+"님이 로그인 중입니다";
+                m.innerHTML=msg;
+            }
+
+            document.getElementById("tc").onchange=function(){
+                m.style.color=this.value;
+                localStorage.tcolor=this.value;
+            }
+
+            document.getElementById("bc").onchange=function(){
+                m.style.backgroundColor=this.value;
+                localStorage.bcolor=this.value;
+            }
+
+
+
+
+        }
+    </script>
+
+</head>
+<body>
+    <b>아이디 입력 : </b> <input type="text" id="id" style="width: 100px;">
+    <button type="button" id="btnlogin">로그인</button>
+    <br>
+    <b>글자색 변경 : </b> <input type="color" id="tc">
+    <b>배경색 변경 : </b> <input type="color" id="bc">
+    <div id="main">111</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>form 태그 안에서 각종 폼태그 구현</h2>
+    <form name="frm">       <!-- 백엔드로 한번에 보낼 때 form태그를 사용함 -->
+        <h3>이미지를 선택하세요</h3>
+        <input type="radio" name="photo" value="../연예인사진/10.jpg">김태희&nbsp;&nbsp;
+        <input type="radio" name="photo" value="../연예인사진/13.jpg">박신혜&nbsp;&nbsp;
+        <input type="radio" name="photo" value="../연예인사진/15.jpg">설현&nbsp;&nbsp;
+        <input type="radio" name="photo" value="../연예인사진/12.jpg">박보영
+        <br>
+        <b>메세지 : </b>
+        <input type="text" name="message">
+        <br>
+        <button type="button" id="btn1">출 력</button>
+    </form>
+    <div id="msg"></div>
+    <img src="" id="myphoto" width="300" border="10">
+
+    <script>
+        // btn1.onclick=~~~랑 같지만 기본적인건 document.get~~이렇게하는거.
+        document.getElementById("btn1").onclick=function(){
+            // photo 변수를 만들고 그안에 myphoto의 값을 넣을꺼야
+            var photo=document.getElementById("myphoto");
+            // 그리고 photo의 값을 변경할껀데, src == myphoto에 들어가는 frm.photo.value값으로 변경할꺼야
+            photo.setAttribute("src",frm.photo.value);
+            // frm.message.value 이거는 name="~~~" 이럴 때만 사용가능함.
+            document.getElementById("msg").innerHTML=frm.message.value;
+        }
+    </script>
+</body>
+</html>

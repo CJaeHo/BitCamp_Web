@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2rem;  
+            /*  rem은 최상위태그가 기준, em은 상위태그가 기준이 됨
+                쉽게말하면 em은 은행 복리 생각하면됨. 맨위에의 1.2배가 바로 아래
+                그 다음 아래는 1.2배 받은 크기에 1.2배 이렇게 계속 점점 커짐 
+            */
+        }
+    </style>
+
+    <style>
+        div.c{
+            position: absolute;
+            left: 700px;
+            top: 300px;
+        }
+    </style>
+
+
+    <script>
+        // 처음 load시 호출되는 함수(==window.onload)
+        // document.ready(function(){}); 이렇게 써도되긴 함
+        $(function(){
+            $("div.a>img").css({    // 얘는 style변경이라 단위 있어야함.
+                "width":"200px",
+                "border":"4px solid orange",
+                "height":"240px"
+            });
+            $("div.b>img").css({   
+                "width":"120px",
+                "border":"2px solid green",
+                "height":"120px",
+                "border-radius":"100px"
+            });
+
+            // div.a아래의 img중 첫번째만
+            $("div.a>img:eq(0)").attr("src","../연예인사진/19.jpg");
+            // 배열을 생각하면 될 듯. equarl(0)을 줄여서 eq(0)으로 표시.
+            // 첫번째는 무조건 0.
+
+            // 2번째(인덱스로는 1)
+            $("div.a>img").eq(1).attr("src","../음식이미지/감자볼.jpg");
+            // 바깥에 eq(인덱스)도 됨.
+
+            // div.b 아래의 img중 짝수번째 (0, 2, 4,...).. even 사용
+            $("div.b>img:even").attr("src","../jquery_image/11.png");
+
+            // div.b 아래의 img중 홀수번째 (1, 3, 5,...).. even 사용
+            $("div.b>img:odd").attr("src","../jquery_image/a02.png");
+
+            // ------------------아 혹시나 값이 겹치면 덮어씌워짐----------------------
+
+            // div.a아래의 img중 마지막꺼만
+            $("div.a>img").last().css("box-shadow","5px 5px 5px gray");
+            // 둘다 됨. 둘다 해놔도 오류안남 마지막꺼가 덮어씌워지니까
+            $("div.a>img:last").css("box-shadow","5px 5px 5px gray");
+            // 맨앞은 first
+
+            // 인덱스 1번보다 큰 곳에 적용
+            $("div.a>img:gt(1)").attr("src","../div_img/beauty2.jpg");
+            // 인덱스 1번보다 작은 곳에 적용 -> lt
+
+
+
+            // 이벤트-모든 img에대한 이벤트
+            // 자바스크립트는 onclick인데 jquery는 on빼고 click
+
+            $("img").mouseover(function(){
+                // 현재 마우스가 있는 img의 src 얻기
+                var myimg=$(this).attr("src");      // $(this) 지금 마우스가 있는 곳 
+                // div.c>img에 적용시키기
+                $("div.c>img").attr("src",myimg);
+            });
+
+
+
+        });
+    </script>
+
+
+
+
+</head>
+<body>
+    
+    <div class="a">
+        <img src="">
+        <img src="">
+        <img src="">
+        <img src="">
+    </div>
+    <div class="b">
+        <img src="">
+        <img src="">
+        <img src="">
+        <img src="">
+    </div>
+    <div class="c">
+        <img src="">
+    </div>
+
+
+</body>
+</html>
