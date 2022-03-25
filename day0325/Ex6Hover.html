@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2rem;  
+            /*  rem은 최상위태그가 기준, em은 상위태그가 기준이 됨
+                쉽게말하면 em은 은행 복리 생각하면됨. 맨위에의 1.2배가 바로 아래
+                그 다음 아래는 1.2배 받은 크기인 놈의 1.2배 이렇게 계속 점점 커짐 
+            */
+        }
+    </style>
+
+    <style>
+        .selected{
+            border: 5px solid pink;
+            box-shadow: 5px 5px 5px gray;
+        }
+        .photo{
+            position: absolute;
+            left: 400px;
+            top: 200px;
+        }
+    </style>
+
+    <script>
+        $(function(){
+            $("div.a").css({
+                "float":"left",
+                "margin-right":"5px"
+            });
+
+            $("div.a>img").css({
+            "width":"70px",
+            "height":"70px",
+            "border":"1px solid black"
+            });
+
+            // hover 이벤트(mouseover + mouseout)
+            $("div.a>img").hover(function(){
+                // 현재 이미지의 src를 얻는다(변수명 myimg)
+                var myimg=$(this).attr("src");
+                // 현재 이미지에 selected class 추가하기
+                $(this).addClass("selected");
+                // myimg를 div.photo>img에 적용하기
+                $("div.photo>img").attr("src",myimg);
+
+                // 이벤트가 발생한 이미지의 다음태그가 h2태그임-거기서 text얻기
+                // text(): 자바스크립트의 innerText와 같음
+                var title=$(this).next().text();    // next를 안하면 이 title값은 for문에 있는 ㅇ
+                // h2.title에 text로 넣기
+                $("h2.title").text(title);
+
+            }, function(){
+                // div.photo>img의 이미지를 원래 이미지로 변경
+                $("div.photo>img").attr("src","../img/btn01.gif");
+                // selected class 제거
+                $(this).removeClass("selected");
+
+                // h2.title의 원래 글자로 변경하기
+                $("h2.title").text("제 목");
+            });
+        });
+    </script>
+
+</head>
+<body>
+    
+    <div class="photos">
+        <script>
+            var s="";
+            for(i=1; i<=10; i++){
+                s+="<div class='a'>";
+                var iname="chr"+(i<10?"0":"")+i+".gif";
+                s+="<img src='../img/"+iname+"'>";
+                s+="<h3>동물 "+i+"</h3>";
+                s+="</div>";
+            }
+            document.write(s);
+        </script>
+    
+    </div>
+    <div class="photo">
+        <img src="../img/btn01.gif">
+        <h2 class="title">제 목</h2>    
+        <!-- 이 title을 각 사진에 맞게 이름 변경해줄꺼임 56~59, 67~68 -->
+    </div>
+
+
+
+</body>
+</html>

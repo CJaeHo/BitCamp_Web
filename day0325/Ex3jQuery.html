@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2rem;  
+            /*  rem은 최상위태그가 기준, em은 상위태그가 기준이 됨
+                쉽게말하면 em은 은행 복리 생각하면됨. 맨위에의 1.2배가 바로 아래
+                그 다음 아래는 1.2배 받은 크기에 1.2배 이렇게 계속 점점 커짐 
+            */
+        }
+    </style>
+
+    <script>
+        // 처음 load시 호출되는 함수(==window.onload)
+        // document.ready(function(){}); 이렇게 써도되긴 함
+        $(function(){
+
+            // alert("처음입니다.");    // 라이브 서버로 키자마자 확인창 뜸.
+            // $() 이걸 셀렉터라고 함
+
+            $("div.apple").css("color","red");
+            
+            // > 말고 띄어쓰기를 쓰면 앞에있는게 기준으로 밑에있는거 전부다 라는 뜻
+            $("div.apple>div.banana").css("font-size","25px");
+
+            // b, div, span 상관없이 .banana는 다 적용됨
+            $(".banana").css("border","3px dotted green");
+            
+            // div태그중에 id가 kiwi인거,,, div #kiwi면 div 하위태그중에 아이디가 kiwi인거
+            $("div#kiwi").css("color","pink").css("font-size","3em").
+            css("background-color","#ffc");
+            // 이렇게 3개의 style 적용 시 이어붙여도 됨. 방법1
+
+            // 여러개의 style 변경 시. 중괄호 사용. 방법2
+            $("span.banana").css({
+                "color":"gray", "border":"5px inset yellow",
+                "font-size" : "4em", "background-color":"cyan"
+            });
+
+            // span.banana의 배경색을 얻어서 b.apple에 적용해보기
+            $("b.apple").css("background-color",$("span.banana").css("background-color"));
+        
+            // #kiwi의 글자색을 얻어서 #orange에 적용해보기
+            $("#orange").css("color",$("#kiwi").css("color"));
+        
+            // #img1의 src에 이미지 넣기(attr: 속성 변경 시)
+            $("#img1").attr("src","../img/ani12.gif");
+
+            // // 모든 img태그에 이미지 넣기
+            // $("img").attr("src","../연예인사진/12.jpg");
+            // // id, class 모두 이미지 출력됨.
+
+                                                          // attr도 위에 css처럼 사용 가능
+
+            // img태그 중 class명이 myimg인 경우
+            $("img.myimg").attr({       // style이 아니라 속성이라서 단위표시 x.
+                "src":"../연예인사진/12.jpg", "width":"200",
+                "height":"240", "border":"2"
+            });
+
+
+
+
+
+        });
+
+    </script>
+</head>
+<body>
+    <!-- jquery는 교재 452p부터! 
+        jQuery는 일종의 자바스크립트 라이브러리이다.
+        jQuery를 사용하면 자바스크립트의 코드를 상당히 줄일 수 있다. 
+        jquery.com 홈페이지
+        
+        css함수 : style 변경(인자가 1개일 땐 css값 반환)
+        attr함수 : 속성 변경(인자가 1개일 땐 attr값 반환)
+    -->
+    
+
+    <div class="apple">
+        Div apple class
+        <div class="banana">
+            Div apple 안에 banana Class
+        </div>
+    </div>
+
+    <b class="apple">B tag apple class</b><br>
+    <b id="orange">B Tag id가 orange</b><br>
+    <span class="banana">Span Tag banana Class</span><br>
+    <div id="kiwi">
+        Div id가 kiwi
+    </div>
+    <span class="apple banana"> <!-- apple, banana 설정 변경할 때 둘다 같이 변경됨 -->
+        span tag class가 2개(apple, banana)
+    </span>
+    <br><br>
+    <img src="" id="img1">
+    <img src="" class="myimg">
+    <img src="" class="myimg">
+    <img src="" class="myimg">
+</body>
+</html>

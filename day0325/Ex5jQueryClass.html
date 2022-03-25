@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2rem;  
+            /*  rem은 최상위태그가 기준, em은 상위태그가 기준이 됨
+                쉽게말하면 em은 은행 복리 생각하면됨. 맨위에의 1.2배가 바로 아래
+                그 다음 아래는 1.2배 받은 크기인 놈의 1.2배 이렇게 계속 점점 커짐 
+            */
+        }
+    </style>
+
+    <style>
+        /* class 추가 */
+        .apple{
+            border: 10px groove gold;
+            box-shadow: 5px 5px 5px gray;
+        }
+        .orange{
+            border-radius: 50px;
+        }
+        .apple orange{
+            border-radius: 50px;
+            border: 10px groove gold;
+            box-shadow: 5px 5px 5px gray;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <img src="../div_img/bottle01.jpg" width="300">
+    <br>
+    <button type="button">apple 클래스만 추가</button> 
+    <button type="button">orange 클래스만 추가</button> 
+    <button type="button">apple orange 클래스만 추가</button> 
+    <button type="button">모두 제거</button> 
+
+
+    <script>
+        $("button:eq(0)").click(function(){
+            // orange 제거
+            $("img").removeClass("orange");
+            // apple 추가
+            $("img").addClass("apple");
+        });
+        $("button:eq(1)").click(function(){
+            // apple 제거
+            $("img").removeClass("apple");
+            // orange 추가
+            $("img").addClass("orange");
+        });
+        $("button:eq(2)").click(function(){
+            // apple, orange 제거
+            $("img").removeClass();
+            // apple, orange 추가
+            $("img").addClass("apple orange");
+        });
+        $("button:eq(3)").click(function(){
+            // apple orange만 제거
+            $("img").removeClass("apple orange");
+        });
+
+
+        // 이미지에 마우스를 올리면 ../div_img/beauty4.jpg
+        // 벗어나면 ../div_img/bottle01.jpg로 변경
+        $("img").mouseover(function(){      // 자바스크립트는 onmounseover임
+            // $(this)가 지금 현재 마우스가 있는 곳
+            $(this).attr("src","../div_img/beauty4.jpg");
+            $(this).addClass("orange");     // border-radius
+        });
+        $("img").mouseout(function(){   // 자바스크립트는 onmounseout임
+            $(this).attr("src","../div_img/bottle01.jpg");
+            $(this).removeClass("orange");  // border-radius
+        });
+        // 사실... over랑 out은 세트라 이걸 같이 해주는 hover()라는 함수가 있음.
+
+
+
+
+
+    </script>
+
+
+
+
+
+
+
+</body>
+</html>

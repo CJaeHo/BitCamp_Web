@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2rem;  
+            /*  rem은 최상위태그가 기준, em은 상위태그가 기준이 됨
+                쉽게말하면 em은 은행 복리 생각하면됨. 맨위에의 1.2배가 바로 아래
+                그 다음 아래는 1.2배 받은 크기에 1.2배 이렇게 계속 점점 커짐 
+            */
+        }
+
+
+    </style>
+</head>
+<body>
+    <!-- 클라이언트의 디스크에 소량의 데이타를 저장해두기 위한 기억공간(Cookie와 비슷).
+         키/값 쌍으로 자료를 저장하고 키를 이용하여 자료를 조회한다
+         Local Storage : 반 영구적 보관, 크기는 약 5MB
+         Session Storage : 세션이 유효한만큼만 보관
+    -->
+
+    <!-- type="button"을 해줘야하는게 맞음. 근데 이정도는 안해도 값이 나오더라.-->
+    <button type="button" id="btnadd">저장</button>
+    <b>Key값(영문):</b><input type="text" id="mykey" style="width:100px">
+    &nbsp;&nbsp;&nbsp;
+    <b>저장할 값:</b><input type="text" id="mydata" style="width:100px">
+    <button type="button" id="btndel">삭제</button>
+    <button type="button" id="btnalldel">전체 삭제</button>
+
+    <button type="button" id="btnview">내용보기</button>
+    <div id="view"></div>
+
+    <script>
+        document.getElementById("btnadd").onclick=function(){
+            // // 스토리지에 저장하는 방법 3가지
+            // localStorage.setItem("name","이효리");  // 방법1
+            // localStorage.age="23세";                // 방법2
+            // localStorage["addr"]="서울강남";        // 방법3
+
+            // var를 붙이지 않았음으로.. 전역변수로 인식될꺼임.. 변수자체는 전역변수라
+            // 다른 document함수에서도 사용할 수 있는데 .value가 붙으면 
+            // 다른 곳에서 인식못해서 다시 적어줘야 함.
+            mykey=document.getElementById("mykey").value;
+            mydata=document.getElementById("mydata").value;
+
+            // 로컬 스토리지에 입력 값 저장. 위에 밸류값을 받은 변수 ""없이 적음.
+            // key에 대한 값은 중복적용이 아니라 덮어씌우기가 됨.
+            localStorage.setItem(mykey,mydata);
+        }
+        document.getElementById("btndel").onclick=function(){
+            // 삭제(입력한 키값을 찾아서 삭제하기)
+            mykey=document.getElementById("mykey").value;
+            // 요래 또 적어야 함. 48~50줄
+            localStorage.removeItem(mykey);
+        }
+        document.getElementById("btnalldel").onclick=function(){
+            // 전체 삭제하기.. 버튼누르니까 바로 삭제됨..
+            localStorage.clear();
+        }
+        document.getElementById("btnview").onclick=function(){
+            //// 저장된 LocalStorage값을 가져오기(Key 값은 알아야함)
+            //// 가져오는 것도 위에 방법 3가지랑 같음
+            //// var s="로칼스토리지 값 가져오기<br>";
+            // s+="name : "+localStorage.getItem("name")+"<br>";
+            // s+="age : "+localStorage.age+"<br>";
+            // s+="addr : "+localStorage["addr"]+"<br>";
+            // s+="id : "+localStorage.getItem("id")+"<br>";
+            // s+="flower : "+localStorage.flower+"<br>";
+            // getItem(이부분에 key값을 넣어주면 됨)
+
+            // 수정 : 자동검색해서 존재하는 것만 가져오기
+            for(i=0; i<localStorage.length; i++){
+                var k=localStorage.key(i);
+                s+=k+" : "+localStorage.getItem(k)+"<br>";
+            }
+
+            document.getElementById("view").innerHTML=s;
+        }
+
+    </script>
+</body>
+</html>
