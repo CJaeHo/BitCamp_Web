@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body div{ /* body *는 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2rem;
+        }
+    </style>
+
+    <style>
+        table{
+            position: absolute;
+            left: 50px;
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+        th,td{
+
+            border: 1.5px solid gray;
+        }
+        #msg{
+            position: absolute;
+            left: 55px;
+            top : 200px;
+            width: 400px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            font-size: 2em;
+            border: 2px solid blueviolet;
+            border-radius: 50px;
+        }
+        #btn1{
+            position: absolute;
+            left: 258px;
+            top: 112px;
+            width: 200px;
+            height: 40px;
+            border: 2px solid black;
+            border-radius: 10px;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        #image{
+            position: absolute;
+            top: 320px;
+            left: 55px;
+            width: 400px;
+            height: 200px;
+            line-height: 200px;
+            border: 2px solid blueviolet;
+            border-radius: 50px;
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        $(function(){
+
+            $("input:text").focus(function(){
+                $(this).css("background-color","#ffc");
+            });
+            $("input:text").blur(function(){
+                $(this).css("background-color","#fff");
+            });
+
+
+            $("input[name=fontStyle]:checked").val();
+
+            var i="";
+            $("input[name=img]:chedcked").each(function(){
+                i
+            });
+            
+
+            $("image").each(function(index){
+                $(this).text(index);
+
+                var a=parseInt(Math.random()*11);
+                var b=parseInt(Math.random()*11);
+                var c=parseInt(Math.random()*11);
+            
+                var imga="s"+a+".JPG";
+                var imga="s"+b+".JPG";
+                var imga="s"+c+".JPG";
+
+            });
+
+
+            $("#btn1").click(function(){
+                var s=$("msg");
+                s+=$("tcolor").val();
+                s+=$("#fontFamily").val();
+            });
+
+        // 스타일
+        
+
+
+
+        // $("#div.msg").text(s);
+        // $("#div.image").html(i);
+        });
+        
+
+
+
+    </script>
+</head>
+<body>
+    
+    <table>
+        <tr>
+            <th width="100">글자색
+                <td width="300">
+                    <input type="radio" name="tcolor" style="width: 30px;">빨강
+                    <input type="radio" name="tcolor" style="width: 30px;">노랑
+                    <input type="radio" name="tcolor" style="width: 30px;">파랑
+                    <input type="radio" name="tcolor" style="width: 30px;">초록
+                </td>
+            </th>
+        </tr>
+        <tr>
+            <th width="100">글 꼴
+                <td>
+                    <input type="text" id="fontFamily" style="width: 100px;">
+                </td>
+            </th>
+        </tr>
+        <tr>
+            <th width="100">스타일
+                <td width="300">
+                    <input type="checkbox" name="fontStyle" style="width: 30px;">굵게
+                    <input type="checkbox" name="fontStyle" style="width: 30px;">이태릭
+                </td>
+            </th>
+        </tr>
+        <tr>
+            <th width="100">이미지
+                <td width="300">
+                    <input type="checkbox" name="img" style="width: 30px;">인형1
+                    <input type="checkbox" name="img" style="width: 30px;">인형2
+                    <input type="checkbox" name="img" style="width: 30px;">인형3
+                </td>
+            </th>
+        </tr>
+    </table>
+    
+    <button type="button" id="btn1">결과 확인</button>
+
+    <div id="msg">오늘은 힘든 월요일입니다
+
+    </div>
+    <div id="image">11
+
+    </div>
+
+
+
+
+</body>
+</html>

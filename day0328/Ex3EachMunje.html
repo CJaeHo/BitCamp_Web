@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body div{ /* body *는 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2em;
+        }
+    </style>
+
+    <style>
+        div{
+            width: 120px;
+            height: 120px;
+            line-height: 120px;
+            border: 3px solid gray;
+            cursor: pointer;
+            float: left;
+            margin-left: 10px;
+            background-repeat: no-repeat;
+            background-size: 120px 120px;
+        }
+    </style>
+
+    <script>
+        $(function(){
+            // 5개의 배열
+            var imgarr=new Array();
+            imgarr[0]="../음식이미지/갈비립.jpg";
+            imgarr[1]="../음식이미지/김밥.jpg";
+            imgarr[2]="../음식이미지/새우볶음.jpg";
+            imgarr[3]="../음식이미지/알밥.jpg";
+            imgarr[4]="../음식이미지/떡볶이.jpg";
+        });
+
+        // 문제 1: each반복문을 이용해서 div에 위 배열 이미지를 넣는다
+        // background-image에 url('파일명')을 이용해서 넣는다
+
+        $("div").each(function(index){
+            var urlimg="url('"+imgarr[index]+"')";
+            $(this).css("background-image",urlimg);
+        });
+        // 먼저 div를 each 반복문으로 받아주고
+        // url('파일명')을 넣을 urlimg 변수를 만들어주고
+        // urlimg를 background-image에 넣어주기.
+
+
+        // 문제 2: 이미지에 마우스를 올리면 border를 '5px dotted pink'로 변경하고
+        //         해당 이미지의 파일명을 b태그에 출력
+        //         마우스가 벗어나면 border는 원래대로 변경(hover 이용해서 해보기)
+
+        $("div").hover(function(){
+            $(this).css("border","5px dotted pink");
+            $("b").text($(this).css("background-image"));
+        }, function(){
+            $(this).mouseout("border","3px solid gray");
+        });
+        // 먼저 div hover문을 이중으로 만들어주고
+        // 마우스를 올릴 때 5px dotted pink로 변경하고
+        // 이와 동시에 해당 background-image을 b태그에 출력하기
+        // (파일명으로 받으니까 text임)
+        // 마우스를 내보낼 때 3px solid gray로 복구하기
+
+    </script>
+
+
+</head>
+<body>
+    <b></b>
+    <br><br>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+
+
+</body>
+</html>

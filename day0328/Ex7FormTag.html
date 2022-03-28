@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body div{ /* body *는 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2rem;
+        }
+    </style>
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        td,th{
+            border: 1px solid gray;
+        }
+
+        div.msg{
+            position:absolute;  /* 기준점 0,0 왼쪽 상단으로 */
+            left:500px;
+            top: 40px;
+            width: 500px;
+        }
+    </style>
+    
+    <script>
+        $(function(){
+            // input이 text것과 password인것에 포커스가 가면 그 배경값을 바꾼다.
+            $("input:text,input:password").focus(function(){
+                $(this).css("background-color","#ffc");
+            });
+            // input이 text것과 password인것에 포커스가 빠지면 그 배경값을 바꾼다.
+            $("input:text,input:password").blur(function(){
+                $(this).css("background-color","#fff");
+            });
+
+            $("#result").click(function(){
+                var s="[결과 확인]<br><br>";
+                s+="이 름 : "+$("#txtname").val()+"<br>";   // $는 val 자바스크립트는 value
+                s+="비 번 : "+$("#txtpass").val()+"<br>";
+                s+="운전면허 : ";
+
+                // 먼저 체크박스의 체크상태를 알아내기
+                var lic=$("#cblic").is(":checked");
+                // 체크상태에 따라 true or false를 반환
+
+                if(lic)
+                    s+="있음<br>";
+                else
+                    s+="없음<br>";
+
+                // radio 고향
+                s+="고 향 : "+$("input[name='gohang']:checked").val()+"<br>";
+
+                // checkbox
+                s+="IT언어 : ";
+                var cnt=$("input[name=it]:checked").length;     // 체크된 개수로 파악하기
+                if(cnt==0){
+                    s+="가능한 IT 언어가 없음!";
+                }
+                else{
+                    $("input[name=it]:checked").each(function(){
+                        s+="["+$(this).val()+"]&nbsp;";
+                    });
+                    s+=" 등 가능함!";
+                }
+                s+="<br>";
+                
+
+
+                // 무조건 마지막줄에 있어야함.
+                $("div.msg").html(s);       // 자바스크립티는 innerHTML로
+            });
+        });
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <th width="100">이 름</th>
+            <td width="300">
+                <input type="text"  id="txtname" style="width:100px;">
+            </td>
+        </tr>
+        <tr>
+            <th width="100">비 번</th>
+            <td width="200">
+                <input type="password"  id="txtpass" style="width:100px;">
+            </td>
+        </tr>
+        <tr>
+            <th width="100">운전 면허</th>
+            <td width="200">
+                <input type="checkbox"  id="cblic">있음
+            </td>
+        </tr>
+        <tr>
+            <th width="100">고 향</th>
+            <td width="200">
+                <input type="radio"  name="gohang" value="서울" checked>서울&nbsp;
+                <input type="radio"  name="gohang" value="부산">부산<br>
+                <input type="radio"  name="gohang" value="경기도">경기도&nbsp;
+                <input type="radio"  name="gohang" value="제주도">제주도
+            </td>
+        </tr>
+        <tr>
+            <th width="100">IT언어</th>
+            <td width="200">
+                <input type="checkbox"  name="it" value="HTML" checked>HTML&nbsp;
+                <input type="checkbox"  name="it" value="JavaScript" >JavaScript<br>
+                <input type="checkbox"  name="it" value="Java">Java&nbsp;
+                <input type="checkbox"  name="it" value="SpringBoot">SpringBoot<br>
+                <input type="checkbox"  name="it" value="React">React&nbsp;
+                <input type="checkbox"  name="it" value="jQuery">jQuery<br>
+            </td>
+        </tr>
+        <tr>
+            <td id="result" colspan="2" align="center" bgcolor="tomato" 
+                style="color: white; cursor: pointer;">결과 확인
+            </td>
+        </tr>
+    </table>
+
+    <div class="msg">111</div>
+</body>
+</html>

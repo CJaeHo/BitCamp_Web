@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body div{ /* body *는 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2em;
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+    <p>보이는 문단</p>
+    <p style="visibility: hidden;">숨겨진 문단</p>
+    <p style="display: none;">자리를 차지하지 않는 문단</p>
+    <p style="opacity: 0;">투명한 문단</p>      
+    <!-- opacity는 0~1의 실수로 이뤄짐 1이면 보이고 0이면 안보임-->
+    
+    <button type="button">보이게 하기</button>
+    <button type="button">안보이게 하기</button>
+    <br><br>
+
+    <script>
+        // 얘는 "visibility: hidden;" 이렇게 된 애만 갯수에 포함시킴
+        document.write("hidden 문단 갯수:"+$("p:hidden").length+"<br>");    // 1
+        document.write("visible 문단 갯수:"+$("p:visible").length+"<br>");  // 3
+        $("button:eq(0)").click(function(){         
+            // button에 따로 id를 입력하지않아서 순서상 첫번째 있는 버튼을 의미함.
+            $("p:eq(1)").css("visibility","visible");
+            $("p:eq(2)").css("display","block");
+            $("p:eq(3)").css("opacity","1");        // 불투명. 다보이는거
+        });
+        
+        $("button:eq(1)").click(function(){         // 얘는 두번째 버튼
+            $("p:eq(1)").css("visibility","hidden");
+            $("p:eq(2)").css("display","none");     //  
+            $("p:eq(3)").css("opacity","0");        
+            // "p:eq(3)" 이렇게 적는게 셀렉터 형식임.
+        });
+    </script>
+
+    <br><br>
+    <img src="../연예인사진/12.jpg" width="200" style="opacity: 0.2;">opacity: 0.2<br>
+    <!-- 얘는 투명도가 심함 -->
+    <img src="../연예인사진/12.jpg" width="200" style="opacity: 0.5;">opacity: 0.5<br>
+    <!-- 얘는 반정도 투명함 -->
+    <img src="../연예인사진/12.jpg" width="200" style="opacity: 1;">opacity: 1<br>
+    <!-- 얘는 완전 불투명 원래 이미지처럼 보임-->
+    <!-- 0이면 아예 투명이라 안보임 -->
+
+
+
+
+
+</body>
+</html>

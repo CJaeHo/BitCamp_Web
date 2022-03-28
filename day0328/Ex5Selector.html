@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body div{ /* body *는 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2em;
+        }
+    </style>
+
+
+</head>
+<body>
+    <h1>제이쿼리</h1>
+    <ul>
+        <li>class</li>
+        <li>id</li>
+    </ul>
+    <h3>이벤트 공부하기</h3>
+    <ul>
+        <li class="select">click</li>
+        <li>bind</li>
+    </ul>
+
+    <script>
+        // *:header이거는 전체 태그중에서 h태그(h1~h6)에만 css적용하고 싶을 때
+        $("*:header").css("border","3px inset gold");
+
+        // li태그 중에 class가 select인 경우에만 적용시키기
+        $("li.select").css({
+            "color":"green",
+            "font-weight":"bold"
+        });
+
+        // li태그 중에 class가 select인 경우를 제외하고 적용시키기
+        $("li:not(.select)").css("background-color","#ffddff");
+        // not(.~~~)
+
+        // li 태그의 첫번째(전체 li중 첫번째만 해당됨)
+        $("li:first").css("font-size","2em");
+
+        // 부모태그를 기준으로 첫번째 자식에게만 적용시키기
+        $("li:first-child").css("text-decoration","underline").
+                            css("background-color","orange")
+        // 각 문단의 첫번째 ul이 부모태그가되고 
+        // 그 자식들 중 첫번째 li인 자식에게만 적용시키는거임
+
+        // bind라는 문자열을 포함하고 있는 li태그에만 적용
+        $("li:contains(bind)").css("color","magenta");
+        // @@:contains(~~~) ~~~를 포함하는 @@태그에만 적용하는 거
+
+
+
+
+
+    </script>
+    
+
+
+</body>
+</html>

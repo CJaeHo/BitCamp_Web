@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body div{ /* body의 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2em;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <h1>111</h1>
+
+    <script>
+        $("div").css({      // 달러안에 "" 까먹지말고 넣어주기.
+            "width":"70px",             // 너비
+            "height":"70px",            // 높이
+            "border":"3px inset gray",  // 테두리 선
+            "cursor":"pointer",         // 가르키면 손모양 커서
+            "float":"left",             // 왼쪽 정렬
+            "margin-left":"10px",       // 박스 바깥쪽 왼쪽 여백
+            "text-align":"center",      // 글자 가로 가운데
+            "line-height":"70px"        // 글자 세로 가운데
+        });
+
+        $("h1").css({
+            "clear":"both",
+            "padding-top":"20px"
+        });
+
+        // each문을 이용해서 div의 배경색을 랜덤하게 칠하고 인덱스를 출력
+        $("div").each(function(index){      // 박스안에 0,1,2,3,4 출력할꺼니까 index있어야함
+            // index를 div에 출력하기
+            $(this).text(index);
+
+            // rgb 색상 만들기 - rgb(r,g,b): r,g,b는 0~255사이의 숫자로
+            var r=parseInt(Math.random()*256);
+            var g=parseInt(Math.random()*256);
+            var b=parseInt(Math.random()*256);
+            // 색상 만들기
+            var color="rgb("+r+","+g+","+b+")";
+            // 배경색으로 넣기
+            $(this).css("background-color",color);
+        });
+        // 이벤트 : 해당 div를 클릭하면 배경색을 추출해서 h1에 출력
+
+        $("div").click(function(){      // 맞다.. on 빠지지.....ㅅ..
+            // 클릭한 div의 bg값을 얻는다
+            var bg=$(this).css("background-color");
+            // h1태그에 넣기
+            $("h1").text(bg);   // 48번줄 index에 bg 넣기
+            
+        });
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

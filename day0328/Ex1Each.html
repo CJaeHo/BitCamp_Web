@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body *{ /* body의 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2em;
+        }
+    </style>
+    <style>
+        .bg_0_line{background-color: orange; width: 500px; border: 3px solid green;}
+        .bg_0_line{background-color: pink; width: 500px; border: 3px solid gray;}
+        .bg_0_line{background-color: cyan; width: 500px; border: 3px solid orange;}
+        .bg_0_line{background-color: yellow; width: 500px; border: 3px solid magenta;}
+    </style>
+
+</head>
+<body>
+
+    <h2>Each 반복문 연습</h2>
+    <ul>
+        <li>Have a Nice Day!!!!</li>
+        <li>Have a Nice Day!!!!</li>
+        <li>Have a Nice Day!!!!</li>
+        <li>Have a Nice Day!!!!</li>
+    </ul>
+    
+    <script>
+        // $("ul li").each(function(){    
+        //     console.log($(this).text());
+        // });
+        // $("ul li").each(function(index){    // index를 받아도 되고 안받아도되고
+        //     console.log($(this).text(),index);  // 이러면 index값은 0,1,2,3 나옴
+        // });
+        // $("ul li").each(function(item){    // index는 li의 인덱스를 말하고
+        //     console.log($(this).text(),item);  // item은 li의 해당 요소
+        // });
+
+        // selector의 갯수만큼 자동 반복함
+        $("ul li").each(function(index,item){    // index는 li의 인덱스를 말하고
+            console.log($(this).text(),index,item);  // item은 li의 해당 요소
+            // index나 item이나 모두 필요없으면 생략가능함
+            $(this).addClass("bg_"+index+"_line");
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

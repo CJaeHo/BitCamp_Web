@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body div{ /* body *는 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2rem;
+        }
+    </style>
+
+    <style>
+        canvas{
+            cursor:crosshair;
+        }
+        #clr{
+            margin-left: 30px;
+        }
+        #clr div{
+            width: 30px;
+            height: 30px;
+            border: 1px solid black;
+            cursor: pointer;
+            float: left;
+            margin-left: 3px;
+        }
+
+        #clear, #eraser{
+            text-decoration: none;
+            width: 130px;
+            height: 40px;
+            line-height: 40px;
+            border: 2px solid green;
+            border-radius: 50px;
+            float: left;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 20px;
+            box-shadow: 5px 5px 3px gray;
+        }
+    </style>
+
+    <script>
+        $(function(){
+            var can=document.getElementById("can");
+            var ctx=can.getContext("2d");
+
+            var preX,preY;  // 선을 그릴 때 현재 좌표를 저장할 변수
+            var draw=false; // 마우스가 움질일 때 draw가 true일 경우에만 선을 그리게하는 변수
+
+            // 기본 선 종류
+            ctx.strokeStyle="black";
+            ctx.lineCap="round";    // 선의 끝모양을 둥글게해서 선이 이어그려졌을 때 자연스럽게 만들어주는 거
+            ctx.lineWidth=2;
+
+            // 캔바스에 대한 이벤트
+            $("#can").mousedown(function(e){
+                draw=true;      // 마우스를 누를 때 그림이 그려지는 시작위치 지정
+                preX=e.pageX-10;   // 현재 마우스 x좌표위치
+                preY=e.pageY-30;   // 현재 마우스 y좌표위치
+            });
+            $("#can").mouseup(function(e){
+                draw=false;         // 마우스를 누르고 땔 때
+            });
+            $("#can").mousemove(function(e){
+                if(draw){           // 마우스가 클릭된 상태에서 움직일 때만 선을 그림
+                    ctx.beginPath();    
+                    ctx.moveTo(preX,preY);  // 마우스를 클릭한 위치를 시작좌표로 이동
+                    ctx.lineTo(e.pageX-10,e.pageY-30);    // 직전좌표부터 현재좌표까지 선 긋기
+                    ctx.stroke();           // 실제로 선을 그려주는 함수
+                    ctx.closePath();
+                }
+
+                // 마우스가 이동되기전 현재좌표 저장
+                preX=e.pageX-10;
+                preY=e.pageY-30;
+                // 여기까지하면 선이 그려짐
+            });
+
+            // 색상표 클릭 시 선색 변경하기
+            $("#clr>div").click(function(){         // id니까 # 까먹지말고 붙이기!!
+                // 선굵기 다시 2로 지정
+                ctx.lineWidth=2;
+
+                // 배경색을 얻기
+                var color=$(this).css("background-color");      
+                // style이기 때문에 css로 받아야함.. 중요!!
+                
+                // 선색으로 번경하기
+                ctx.strokeStyle=color;
+            });
+
+            // 화면 지우기
+            $("#clear").click(function(){
+                // 채우기 색을 흰색으로 변경 후 전체 사각형을 그리기
+                ctx.fillStyle="#ffffff";
+                ctx.fillRect(0,0,can.width,can.height); // 채워진 사각형
+                // 그림판 사각형 전체를 의미함. 사실상 선을 지우는게 아니라 덮는거네 
+            });
+
+            // 지우개
+            $("#eraser").click(function(){
+                ctx.lineWidth=10;          
+                // 이것도 흰색선을 위에 칠하는거라 두꺼워야 잘 지워짐.
+                // 근데 이대로 냅두면 다음에 그리는 선도 두꺼워지기 때문에
+                // 색상을 눌렀을 때 다시 두께가 2로 바뀌도록 89~90줄에 추가해줘야함
+                ctx.strokeStyle="#ffffff";      // 선색을 흰색으로      
+                
+            });
+        });
+    </script>
+</head>
+<body>
+    
+    <b>Canvas를 이용한 간단한 그림판</b><br>
+    <canvas id="can" width="500" height="500" style="border: 1px solid black;"></canvas>
+
+    <h3>색 상 표</h3>
+    <div id="clr">
+        <div style="background-color: orange;">1</div>
+        <div style="background-color: pink;">1</div>
+        <div style="background-color: cadetblue;">1</div>
+        <div style="background-color: #db7093;">1</div>
+        <div style="background-color: #40e0d0;">1</div>
+        <div style="background-color: #2e8b57;">1</div>
+        <div style="background-color: #7fffd4;">1</div>
+        <div style="background-color: #0000ff;">1</div>
+        <div style="background-color: #7b68ee;">1</div>
+        <div style="background-color: #ff69b4;">1</div>
+
+    </div>
+    <button type="button" id="clear">화면 지우기</button>
+    <button type="button" id="eraser">지우개</button>
+</body>
+</html>
