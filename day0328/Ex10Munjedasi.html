@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=., initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body div{ /* body *는 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2rem;
+        }
+    </style>
+    <style>
+        table{
+             border-collapse: collapse;
+        }
+        td,th{
+            border: 1px solid gray;
+        }
+
+        div.msg{
+            position:absolute;  /* 기준점 0,0 왼쪽 상단으로 */
+            left:100px;
+            top: 200px;
+            width: 500px;
+            font-size: 35px;
+
+        }
+          div.doll{
+            position:absolute;
+            left: 100px;
+            top: 300px;
+            width: 500px;
+            font-size: 35px;
+
+        }
+     </style>
+
+     <script>
+         $(function(){
+
+            // 버튼 이벤트
+            $("#result").click(function(){
+                var tcolor=$("input[name='tcolor']:checked").val();
+                $("div.msg").css({
+                    "color":tcolor,
+                    "font-family":$("#tfont").val(),        // 얘 id잖아 # 붙여줘야지
+                    "font-weight":$("#cbbold").is(":checked")?"bold":"normal",
+                    "font-style":$("#cbitalic").is(":checked")?"italic":"normal"
+                    // 삼항연산자 쓰는거 괜찮당
+                });
+
+
+                // 인형
+                var len=$("input[name='mydoll']:checked").length
+
+                if(len==0){
+                    $("div.doll").html()="";
+                }
+                else{
+                    var s="";
+                    $("input[name='mydoll']:checked").each(function(){
+                        s+="<img src='"+$(this).val()+"'>";
+                    });
+                    $("div.doll").html(s);
+                }
+
+            });
+
+         });
+     </script>
+
+</head>
+<body>
+    
+
+    <table>
+        <tr>
+            <th width="100">글자색
+            <td width="400">
+                    <input type="radio" name="tcolor" value="red">빨강&nbsp;&nbsp;
+                    <input type="radio" name="tcolor" value="blue">파랑&nbsp;&nbsp;
+                    <input type="radio" name="tcolor" value="pink">분홍&nbsp;&nbsp;
+                    <input type="radio" name="tcolor" value="green">초록&nbsp;&nbsp;
+            </td>
+            </th>
+        </tr>
+        <tr>
+            <th width="100">글 꼴
+                <td>
+                    <select id="tfont">
+                        <option value="Jua">Jua</option>&nbsp;
+                        <option value="Gamja FLower">Gamja</option>&nbsp;
+                        <option value="Lobster">Lobster</option>&nbsp;
+                        <option value="Nanum Pen Script">Nanum</option>&nbsp;
+                    </select>
+                </td>
+            </th>
+        </tr>
+        <tr>
+            <th width="100">스타일
+                <td>
+                    <input type="checkbox" id="cbbold">굵게&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox" id="cbitalic">이태릭&nbsp;&nbsp;&nbsp;
+                </td>
+            </th>
+        </tr>
+        <tr>
+            <th width="100">이미지
+                <td>
+                <input type="radio"  name="mydoll" value="../jquery_image/03.png">인형1&nbsp;
+                <input type="radio"  name="mydoll" value="../jquery_image/04.png">인형2&nbsp;
+                <input type="radio"  name="mydoll" value="../jquery_image/05.png">인형3&nbsp;
+                </td>
+            </th>
+        </tr>
+        <tr>
+            <td id="result" colspan="2" align="center" bgcolor="tomato" 
+                style="color: white; cursor: pointer;">결과 확인
+            </td>
+        </tr>
+    </table>
+    <div class="msg">오늘은 힘든 월요일입니다</div>
+    <div class="doll">111</div>
+
+</body>
+</html>
