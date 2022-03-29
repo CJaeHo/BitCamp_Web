@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body div{ /* body *는 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2rem;
+        }
+    </style>
+
+    <script>
+        // 전역변수
+        var color, width, height, idx, can, ctx;
+
+        $(function(){
+            // 초기값 가져오기
+            color=$("#selcolor").val();         // 이거 id로 받은거 기억해
+            width=$("#txtw").val();             // 앞에 #이 빠졌잖아..
+            height=$("#txth").val();            // 한참찾았네....EC...
+            idx=$("input[name='shape']:checked").val();
+
+            can=document.getElementById("can");
+            ctx=can.getContext("2d");
+
+            draw();     // 그릴거
+
+
+            // 이벤트
+            // select 변경시 이벤트
+            $("#selcolor").change(function(){
+                color=$(this).val();
+            });
+
+            // 도형 선택 이벤트
+            $("input[name='shape']").click(function(){
+                // 클릭한 곳의 value값을 가져오기
+                idx=$(this).val();
+                draw();
+            });
+
+            // 버튼 이벤트
+
+            $("#btn").click(function(){
+                width=$("#txtw").val();
+                height=$("#txth").val();
+                draw();
+            });
+        });
+
+        function draw(){
+            // 채우기색을 흰색으로
+            ctx.fillStyle="#fff";
+            // 그전에 선택한 도형이 남아있으므로 전체 지우기
+            ctx.fillRect(0,0,can.width,can.height);
+
+            ctx.strokeStyle=color;  // 선색
+            ctx.fillStyle=color;    // 채우기색
+            ctx.lineWidth=5;        // 선굵기
+
+            if(idx==1){
+                ctx.strokeRect(50,30,width,height);     // 테두리만 있는 사각형
+            }
+            else{
+                ctx.fillRect(50,30,width,height);
+            }
+        }
+    </script>
+</head>
+<body>
+    
+    <canvas id="can" width="200" height="200"></canvas>
+
+    <h4>도형 색상 변경</h4>
+    <select id="selcolor">
+        <option value="#ff8c00" selected>오렌지색</option>
+        <option value="#dda0dd">밝은분홍색</option>
+        <option value="#2e8b57">초록색</option>
+        <option value="#ff0000">빨강색</option>
+        <option value="#0000ff">파랑색</option>
+    </select>
+    <br><br>
+    <b>선택 : </b>
+    <input type="radio" name="shape" value="1">테두리만&nbsp;&nbsp;
+    <input type="radio" name="shape" value="2" checked>채우기
+    <br><br>
+    <b>너비 변경 : </b>
+    <input type="text" id="txtw" value="130" style="width: 50px;">
+    <br>
+    <b>높이 변경 : </b>
+    <input type="text" id="txth" value="130" style="width: 50px;">
+    <br><br>
+    <button type="button" id="btn">설정한 값으로 도형 변경</button>
+
+
+</body>
+</html>

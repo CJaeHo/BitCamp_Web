@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+
+    <style>
+        #image{
+            cursor: pointer;
+        }
+        #show{
+            max-width: 200px;
+        }
+    </style>
+
+
+
+</head>
+<body>
+    
+
+
+    <img src="" id="image" width="200">
+
+
+    <script>
+        // [문제 1] 
+        // 스크립트를 이용해서 위 배열의 0번지 이미지를 img태그를 이용해서 나타내시오
+        // (방식은 자기 마음대로)
+        var arr=["../연예인사진/12.jpg","../연예인사진/13.jpg",
+                "../연예인사진/14.jpg", "../연예인사진/15.jpg","../연예인사진/16.jpg"];
+          
+
+        $("#image").attr("src",arr[0]);
+
+
+
+
+        // [문제2] 1번에서 나온 이미지를 클릭할때마다 배열5개중 랜덤하게 구한 이미지로 변경되도록
+        //  이벤트를 구현하시오(이벤트 부분만 코드복사해서 넣어주세요)
+        var s="";
+        $("#image").click(function(){
+            var a=parseInt(Math.random()*5);
+            // s="<img src='../연예인사진/1"+a+".jpg'>"
+            $("#image").attr("src",arr[a]);
+
+        });
+       
+    </script>
+
+
+</body>
+</html>

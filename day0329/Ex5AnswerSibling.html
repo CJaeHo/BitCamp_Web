@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body div{ /* body *는 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+
+        }
+    </style>
+    <style>
+        .red{
+            color: red;
+        }
+        .green{
+            color: green;
+        }
+        .blue{
+            color: blue;
+        }
+        div.content{
+            cursor: pointer;
+            font-size: 25px;
+        }
+        div.answer>h5{
+            text-indent: 30px;      /* indent = 들여쓰기 */
+        }
+    </style>
+
+
+        <!-- /*
+        parent() : 부모태그
+        siblings() : 형제태그
+        children(),find() : 자식태그
+        next() : 바로 다음 태그
+        prev() : 바로 이전 태그
+
+        */ -->
+    <script>
+        $(function(){
+            // 댓글 숨기기
+            $("div.answer").hide();
+
+            // 이벤트
+            // 내용을 클릭 시 그 내용에 대한 댓글만 보이고 다른 내용에 대한 댓글은 숨기기
+        
+
+
+            $("div.content>b").click(function(){
+                // 기존에 열려있는 댓글 닫기
+                $(this).parent().siblings().find("div.answer").hide('slow');
+                // 클릭안 메뉴의 answer 보이게하기
+                $(this).next().show('slow');
+                // 여러개가 겹치면 항상 첫번째꺼(==누르는거)가 기준이 됨
+            });
+        
+        });
+    </script>
+
+</head>
+<body>
+    
+    <div class="content red">   <!-- class에 두개 이상 쓰려면 한칸 띄우고 적으면 됨 -->
+        <b>내용1</b>
+        <div class="answer">
+            <h5>내용1에 대한 댓글 1</h5>
+            <h5>내용1에 대한 댓글 2</h5>
+            <h5>내용1에 대한 댓글 3</h5>
+        </div>
+    </div>
+    <div class="content green">   <!-- class에 두개 이상 쓰려면 한칸 띄우고 적으면 됨 -->
+        <b>내용2</b>
+        <div class="answer">
+            <h5>내용2에 대한 댓글 1</h5>
+            <h5>내용2에 대한 댓글 2</h5>
+            <h5>내용2에 대한 댓글 3</h5>
+        </div>
+    </div>
+    <div class="content blue">   <!-- class에 두개 이상 쓰려면 한칸 띄우고 적으면 됨 -->
+        <b>내용3</b>
+        <div class="answer">
+            <h5>내용3에 대한 댓글 1</h5>
+            <h5>내용3에 대한 댓글 2</h5>
+            <h5>내용3에 대한 댓글 3</h5>
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>

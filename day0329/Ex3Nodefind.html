@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body div{ /* body *는 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="one">첫번째 div태그
+        <div class="hana">div 하나</div>
+        <div>둘</div>
+        <div>셋</div>
+        <h3>h3 Tag</h3>
+        <h4>h4 Tag</h4>
+    </div>
+
+    <div class="Two">두번째 div태그
+        <div class="hana">div 하나</div>
+        <div>둘</div>
+        <div>셋</div>
+        <h3>h3 Tag</h3>
+        <h4>h4 Tag</h4>
+    </div>
+
+    <script>
+        /*
+        parent() : 부모태그
+        siblings() : 형제태그
+        children(),find() : 자식태그
+        next() : 바로 다음 태그
+        prev() : 바로 이전 태그
+        
+        */
+
+        // one의 hana. siblings는 hana class를 제외한 같은 곳에 속해있는 것들.
+        $("div.one div.hana").siblings().css("color","red");
+
+        // div의 자식태그 중에 hana라는 class를 가진 애들. find()도 같음.
+        $("div").children("div.hana").css("text-decoration","underline");
+
+        // hana class를 가진 애를 기준으로 다음 다음인 셋에 적용.
+        $("div.hana").next().next().css("border","2px solid gold");
+
+        // 이벤트
+        $("div.one").click(function(){
+            $(this).find("div").show('fast');
+            
+            // 나의 형제태그에서 div를 찾아서 숨겨라
+            $(this).siblings().find("div").hide('fast');
+
+            // one을 클릭했을 때, find자식태그 중 div를 빠르게 보이게하고
+            // one을 클릭했을 떄, siblings형제태그 중(<-- Two) div를 빠르게 숨겨라.
+
+        });
+        $("div.Two").click(function(){
+            $(this).find("div").show('slow');
+            
+            // 나의 형제태그에서 div를 찾아서 숨겨라
+            $(this).siblings().find("div").hide('slow');
+        });
+
+    </script>
+</body>
+</html>

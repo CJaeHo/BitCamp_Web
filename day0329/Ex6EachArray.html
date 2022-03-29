@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body div{ /* body *는 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+        }
+    </style>
+
+    <style>
+        div.box{
+            border: 5px solid red;
+            margin-top: 20px;
+            width: 300px;
+            height: 130px;
+            padding: 20px 20px;
+            font-family: 'Jua';
+            font-size: 1.3rem;
+        }
+    </style>
+
+
+
+
+
+</head>
+<body>
+    
+    <h3>배열 반복시 사용하는 $.each문</h3>
+    <script>
+        var data1=["red","green","tomato","magenta","gray","orange"];
+        $.each(data1,function(idx,item){
+            var s="<h2 style='color:"+item+";width:200px'>"+item+"</h2>";
+            document.write(s);
+        });
+    </script>
+
+    <h3>위의 배열을 for문을 이용해서 같은 모양으로 나오게 하기</h3>
+    <script>
+        for(i=0;i<data1.length;i++){
+            s="<h2 style='color:"+data1[i]+"'>"+data1[i]+"</h2>"
+            document.write(s);
+            // <h2 style='color:red'>red</h2> 이거를 위에처럼 나타낸거
+        }
+    </script>
+
+    <hr>
+    <div id="show"></div>
+    <script>
+        var info=[
+            {name:"이영자",hp:"010-2222-3333",addr:"서울시"},   // 이게 하나의 인덱스
+            {name:"강호동",hp:"010-6767-3333",addr:"부산시"},
+            {name:"유재석",hp:"010-8764-3333",addr:"제주도"}
+        ];
+
+        $.each(info,function(idx,data){     // idx자리는 index, data자리는 값
+            s+="<div class='box'>";
+                s+="이름 : "+data.name+"("+(idx+1)+"번)<br>";   // 인덱스는 0번부터 시작이니까 +1 해주는거
+                s+="핸드폰 : "+data.hp+"<br>";
+                s+="주소 : "+data.addr+"</div>";
+        });     // <div class='box'>이름 : value(value번)<br>핸드폰 : value<br>주소 : value </div>
+        $("#show").html(s);
+    </script>
+
+</body>
+</html>

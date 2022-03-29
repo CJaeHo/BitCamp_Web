@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body div{ /* body *는 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+            font-size: 1.2rem;
+        }
+    </style>
+
+
+</head>
+<body>
+    
+    <img src="../jquery_image/03.png">
+    <img src="../jquery_image/06.png">
+    <img src="../jquery_image/12.png">
+    <img src="../jquery_image/a03.png">
+
+    <script>
+        // id가 없으니까 eq(index)로 받기
+        $("img").eq(0).hover(function(){
+            $(this).css("transform","rotate(45deg)")
+        }, function(){  // rotate(숫자deg) 이거는 숫자만큼 돌리기
+            $(this).css("transform","rotate(0deg)")
+        });
+        $("img").eq(1).hover(function(){
+            $(this).css("transform","rotate(-45deg)")
+        }, function(){  // -숫자deg는 +일 때 방향과 반대로 
+            $(this).css("transform","rotate(0deg)")
+        });
+        $("img").eq(2).hover(function(){
+            // 가로,세로 2배씩 확대
+            $(this).css("transform","scale(2,2)")
+        }, function(){
+            $(this).css("transform","scale(1,1)")
+        });
+        $("img").eq(3).hover(function(){
+            $(this).css("transform","translate(50px,50px)")
+        }, function(){
+            $(this).css("transform","translate(0px,0px)")
+        });
+        
+    </script>
+
+
+
+</body>
+</html>

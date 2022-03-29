@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body div{ /* body *는 모든 하위태그들을 말함 */
+            font-family: 'Jua';
+
+        }
+    </style>
+
+    <style>
+        div.bitcamp{
+            position: absolute;
+            left: 300px;
+            width: 250px;
+            height: 300px;
+            border: 2px groove gray;
+            border-radius: 30px;
+            top: 100px;
+        }
+        ul li{
+            list-style: none;       /* 이거는 앞에 dotted 없애는거. 점박이 */
+        }
+        ul.menu{
+            font-size: 2em;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        ul.submenu>li{
+            font-size: 24px;
+            font-family: 'Gamja Flower';
+        }
+        ul.submenu>li:hover{
+            background-color: #ccc;
+            color: yellow;
+            width: 120px;
+        }
+    </style>
+
+        <!-- /*
+        parent() : 부모태그
+        siblings() : 형제태그
+        children(),find() : 자식태그
+        next() : 바로 다음 태그
+        prev() : 바로 이전 태그
+
+        */ -->
+
+    <script>
+        $(function(){
+            // submenu 숨기기
+            $("ul.submenu").hide();
+        
+
+            // 문제 : 이벤트
+            // 메인메뉴명을 클릭 시 해당메뉴의 서브메뉴는 나타나도록 하고
+            // 다른 서브메뉴들은 숨긴다
+            $("ul.menu>li").click(function(){
+                $(this).find("ul.submenu").show('slow');
+                $(this).siblings().find("ul.submenu").hide('slow');
+                        // 두개가 같은 방법임.
+                // $(this).find("ul.submenu").slideDown('slow');
+                // $(this).siblings().find("ul.submenu").slideUp('slow');
+            });
+            
+        });
+    </script>
+
+
+</head>
+<body>
+    
+    <div class="bitcamp">
+        <ul class="menu">
+            <!-- 첫번째 메뉴 -->
+            <li>File
+                <ul class="submenu">
+                    <li>New</li>
+                    <li>Open File</li>
+                    <li>Save</li>
+                    <li>Rename</li>
+                </ul>
+            </li>
+            <!-- 두번째 메뉴 -->
+            <li>Edit
+                <ul class="submenu">
+                    <li>Cut</li>
+                    <li>Copy</li>
+                    <li>Paste</li>
+                    <li>Delete</li>
+                </ul>
+            </li>
+            <!-- 세번째 메뉴 -->
+            <li>Help
+                <ul class="submenu">
+                    <li>오시는 길</li>
+                    <li>검색</li>
+                    <li>마켓</li>
+                    <li>설명서</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+</html>
