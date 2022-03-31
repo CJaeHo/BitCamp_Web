@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        div.wall{
+            position: absolute;
+            width: 200px;
+            height: 500px;
+            background-image: url('../jquery_image/bg2.png');
+            z-index: 2;
+        }
+        #img1{
+            position: absolute;
+            left: 140px;
+            top: 100px;
+            width: 150px;
+            height: 200px;
+            z-index: 1;
+        }
+    </style>
+    <script>
+        $(function(){
+            $("#img1").click(function(){
+                $(this).animate({"width":"0px"},'slow',function(){  // 들어가고
+                    $(this).animate({"width":"150px"},'slow');      // 다시나와
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+    
+    <div class="wall"></div>
+    <img src="../jquery_image/03.png" id="img1">
+
+
+</body>
+</html>

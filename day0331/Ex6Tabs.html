@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Tabs - Default functionality</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+</head>
+<body>
+ 
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">배경이미지</a></li>
+    <li><a href="#tabs-2">연예인사진</a></li>
+    <li><a href="#tabs-3">음식사진</a></li>
+  </ul>
+  <div id="tabs-1">
+    <p>배경 이미지 2개</p>
+    <img src="../div_img/beauty1.jpg" width="200">
+    <img src="../div_img/beauty2.jpg" width="200">
+  </div>
+  <div id="tabs-2">
+    <p>연예인 사진 2개</p>
+    <img src="../연예인사진/12.jpg" width="200">
+    <img src="../연예인사진/10.jpg" width="200">
+  </div>
+  <div id="tabs-3">
+    <p>맛있는</p>
+    <p>음식</p>
+    <img src="../음식이미지/냉면.jpg" width="200">
+    <img src="../음식이미지/돼지갈비.jpg" width="200">
+  </div>
+</div>
+ 
+ 
+</body>
+</html>

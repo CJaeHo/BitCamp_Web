@@ -1,0 +1,72 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+body, html{
+    height: 100%;
+    overflow: hidden;   /* 스크롤바 없애는거 */
+}
+body{
+    background: #fff1c6 url('../jquery_image/bg.png') center center;
+    background-size: cover;
+}
+
+.sunban-wrapper{
+    width: 780px;
+    margin: 50px auto;      /* 가운데로 */
+}
+
+#control-wrapper{
+    width: 300px;
+    height: 420px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+}
+
+.sunban{
+    height: 150px;
+    margin-bottom: 50px;
+    width: 780px;
+    background: url('../jquery_image/sunban.png') no-repeat center bottom;
+}
+
+.sunban li{
+    float: left;
+    width: 128px;
+    height: 128px;
+}
+
+
+
+.money li{
+    cursor: pointer;
+}
+
+.gun{
+    width: 300px;
+    height: 250px;
+    background: url('../jquery_image/gun.png') no-repeat;
+    cursor: pointer;
+    text-indent: -9999px;   /* 총이라는 글씨를 안보이는 곳으로 보내버린대 ㅋㅋ */
+}
+.gun:active{
+    background-position: bottom;    /* 총 그림을 위로 올리는 거 */
+}
+
+#msg{
+    clear: both;
+    position: absolute;
+    left: 700px;
+    top: 500px;
+    width: 400px;
+    height: 50px;
+    font-size: 25px;
+    font-family: 'Jua';
+    border: 10px groove orange;
+    text-align: center;
+    line-height: 50px;
+}

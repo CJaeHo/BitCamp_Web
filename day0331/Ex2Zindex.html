@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        h3{
+            width: 400px;
+            height: 40px;
+            border: 1px solid #000;
+            line-height: 40px;
+            border-radius: 20px;
+            padding-left: 20px;
+            text-shadow: 10px 10px 20px gray;
+            cursor: pointer;
+        }
+
+        h3:active{
+            border: 5px solid gray;
+        }
+
+        div{
+            position: absolute;
+            border: 2px solid gray;
+            width: 300px;
+            height: 300px;
+            border-radius: 200px;
+        }
+        div.red{
+            left: 200px;
+            top: 200px;
+            background-color: red;
+            z-index: 5;
+        }
+        div.green{
+            left: 150px;
+            top: 350px;
+            background-color: green;
+            z-index: 3;
+        }
+        div.blue{
+            left: 40px;
+            top: 200px;
+            background-color: blue;
+            z-index: 1;
+        }
+    </style>
+
+    <script>
+        $(function(){
+            $("h3").click(function(){
+                // class 이름 얻기
+                var c=$(this).attr("class");
+                if(c=='blue'){
+                    $("div.blue").css("z-index",3);
+                    $("div.red").css("z-index",1);
+                    $("div.green").css("z-index",2);
+                }else if(c=='red'){
+                    $("div.blue").css("z-index",1);
+                    $("div.red").css("z-index",3);
+                    $("div.green").css("z-index",2);
+                }else if(c=='green'){
+                    $("div.blue").css("z-index",3);
+                    $("div.red").css("z-index",2);
+                    $("div.green").css("z-index",1);
+                }
+            });
+        })
+    </script>
+
+</head>
+<body>
+    <h3 class="red">Red를 제일 위로 올리기</h3>
+    <h3 class="green">Green를 제일 위로 올리기</h3>
+    <h3 class="blue">Blue를 제일 위로 올리기</h3>
+
+    <div class="red"></div>
+    <div class="green"></div>
+    <div class="blue"></div>
+</body>
+</html>

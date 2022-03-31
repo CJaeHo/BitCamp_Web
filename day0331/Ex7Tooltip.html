@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        div.tooltip, div.tooltip2{
+            line-height: 1.5;
+            color: white;
+            width: 200px;
+            background-color: #f90;
+            border: 2px solid white;
+            padding: 1em;
+            font-size: 12px;
+            border-radius: 30px;
+            font-family: 'Jua';
+        }
+
+        b.view{cursor:pointer;}
+    </style>
+    <script>
+        $(function(){
+            // 툴팁에 css추가
+            $("div.tooltip").css({
+                "opacity":"0.9",
+                "position":"absolute",
+                "display":"none"
+            });
+            $("div.tooltip2").css({
+                "opacity":"0.9",
+                "position":"absolute",
+                "display":"none"
+            });
+
+            $("a").bind({
+                mouseover:function(){
+                    $("div.tooltip").fadeIn();
+                },
+                mouseout:function(){
+                    $("div.tooltip").fadeOut();
+                },
+                mousemove:function(e){
+                    $("div.tooltip").css({
+                        left:e.pageX+10+"px",
+                        top:e.pageY+10+"px"
+
+                    });
+                }
+            });
+            
+            $("b.view").bind({
+                mouseover:function(){
+                    $("div.tooltip2").fadeIn();
+                },
+                mouseout:function(){
+                    $("div.tooltip2").fadeOut();
+                },
+                mousemove:function(e){
+                    $("div.tooltip2").css({
+                        left:e.pageX+10+"px",
+                        top:e.pageY+10+"px",
+                    });
+                    // b.view의 text를 얻어서 툴팁에 넣기
+                    $("div.tooltip2").text($(this).text());
+                }
+            });
+        });
+    </script>
+
+
+</head>
+<body>
+
+    <h3>Tooltip 링크 부분에 마우스를 올려보세요</h3>
+    <a style="font-size: 20px; cursor: pointer;">Tooltip</a>
+    <pre>       <!-- <pre> 이거는 <br> 이런거 안해도 적는 고대로 나옴 -->
+        가나다라마바사
+        아자차카타파하
+        ㄹㅇㅁ러디머읾<b class="view">얄라리얄라</b> 리먕러ㅔㄷㅁㅈㄹㅇ
+                                      ㅜㅁ키ㅏ멀인머ㅏㅣ
+    </pre>
+    <div class="tooltip">
+        Java<br>
+        HTML<br>
+        jQuery<br>
+        Oracle<br>
+        SpringBoot
+    </div>
+    <div class="tooltip2">qweqweqwe</div>
+</body>
+</html>
