@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+</head>
+<body>
+    <!-- 이벤트를 강제로 실행시키는 게 Trigger -->
+    <h2 style="color: blue;">Start:</h2>
+    <h2 style="color: pink;">Start:</h2>
+    <h2 style="color: green;">Start:</h2>
+
+    <script>
+        $("h2").click(function(){
+            // 클릭할 때마다 별 추가
+            $(this).append("★");
+        });
+        // 1초단위로 마지막 h2를 클릭한 효과
+        setInterval(function(){
+            $("h2:last").trigger("click");  // 이벤트 강제발생
+        },1000);
+    </script>
+    <hr>
+    <!-- 파일 불러오는 file 타입 -->
+    <input type="file" id="file" style="visibility: hidden;">
+
+    <h1 style="cursor: pointer;">카메라</h1>
+
+    <script>
+        // 카메라를 클릭 시 파일이 열리도록 해보기(trigger이용)
+        $("h1").click(function(){
+            $("#file").trigger("click");
+        });
+    </script>
+</body>
+</html>

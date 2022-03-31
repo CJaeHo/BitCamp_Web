@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+</head>
+<body>
+    <br><br>
+    <button type="button" id="btn1">fadeTo-effect 완성 후 문자열 추가</button>
+    <br><br>
+    <img src="../img/ani11.gif">
+
+    <script>
+        // $("#btn1").click(function(){
+        //     $("img").fadeTo('slow',0.5,function(){
+        //         $("img").after("<b>안녕하세요</b><br>");
+        //     });
+        // });
+
+        // on은 현재 존재하는 요소나 미래에 발생하는 요소 모두 가능
+        // jquery 버전 1.7 이전은 live(on은 1.8부터)
+        // live형식은 jquery 홈페이지가면 나오니까 보고해
+        $("#btn1").on("click",function(){
+            $("img").fadeTo('slow',0.5,function(){
+                $("img").after("<b>안녕하세요</b><br>");
+            });
+        });
+    </script>
+</body>
+</html>

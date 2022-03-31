@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        #msg{
+            font-size: 2em;
+            font-family: 'Jua';
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+        #img1{
+            position: absolute;
+            left: 500px;
+            top: 150px;
+        }
+        button{
+            width: 100px;
+            height: 30px;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <button type="button" id="btn1">Hide</button>
+    <button type="button" id="btn2">show</button>
+    <button type="button" id="btn3">Toggle</button>
+    <br>
+    <button type="button" id="btn4">SlideUp</button>
+    <button type="button" id="btn5">SlideDown</button>
+    <button type="button" id="btn6">SlideToggle</button>
+    <br>
+    <button type="button" id="btn7">FadeOut</button>
+    <button type="button" id="btn8">FadeIn</button>
+    <button type="button" id="btn9">FadeToggle</button>
+    <button type="button" id="btn10">FadeTo</button>
+
+    <div id="msg">재미있는 jQuery!!!</div>
+    <img src="../jquery_image/image_01.png" id="img1">
+
+    <script>
+        $("#btn1").click(function(){
+            $("#msg").hide();
+            $("#img1").hide(1000);  // 숫자, slow, fast
+        });
+        $("#btn2").click(function(){
+            $("#msg").show();
+            $("#img1").show(1000);  // 숫자, slow, fast
+        });
+        $("#btn3").click(function(){
+            $("#msg").toggle();     // hide + show
+            $("#img1").toggle(1000);  // 숫자, slow, fast
+        });
+        $("#btn4").click(function(){
+            $("#msg").slideUp('slow');
+            $("#img1").slideUp('slow');  
+        });
+        $("#btn5").click(function(){
+            $("#msg").slideDown('slow');
+            $("#img1").slideDown('slow');  
+        });
+        $("#btn6").click(function(){
+            $("#msg").slideToggle('slow');
+            $("#img1").slideToggle('slow');  
+        });
+        $("#btn7").click(function(){
+            $("#msg").fadeOut('slow');
+            $("#img1").fadeOut('slow');  
+        });
+        $("#btn8").click(function(){
+            $("#msg").fadeIn('slow');
+            $("#img1").fadeIn('slow');  
+        });
+        $("#btn9").click(function(){
+            $("#msg").fadeToggle('slow');
+            $("#img1").fadeToggle('slow');  
+        });
+        $("#btn10").click(function(){
+            // 3초동안 반투명이 된 후 함수 실행(border변경)
+            $("#msg").fadeTo(3000,0.5,function(){
+                $("#msg").css("border","10px dotted orange")
+            });
+            // 이미지가 서서히 흐려지다가 3초뒤 다시 원래 투명도로 전환
+            $("#img1").fadeTo(3000,0.2,function(){
+                $("#img1").css("opacity","1");
+            });  
+        });
+    </script>
+
+    <br>
+    
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        body *{
+            font-size: 1.2rem;
+            font-family: 'Jua';
+        }
+    </style>
+    <style>
+        #bbox{
+            position: absolute;
+            width: 800px;
+            height: 500px;
+            border: 2px solid black;
+        }
+        #fbox{
+            position: absolute;
+            width: 220px;
+            height: 130px;
+            top: 50px;
+            left: 50px;
+        }
+        #btn1:hover{
+            color: rgb(126, 124, 32);
+        }
+        #sbox{
+            position: absolute;
+            width: 220px;
+            height: 130px;
+            top: 50px;
+            left: 230px;
+        }
+        #tbox{
+            position: absolute;
+            width: 220px;
+            height: 180px;
+            top: 20px;
+            left: 540px;
+            text-align: center;
+            line-height: 25px;
+            font-family: 'Jua';
+            font-style: italic;
+            color: brown;
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+        div.cinema1:hover, .cinema2:hover, .cinema3:hover, 
+        .title1:hover, .title2:hover, .title3:hover{
+            color: red;
+        }
+
+        #lbox{
+            position: absolute;
+            width: 450px;
+            height: 200px;
+            border: 2px solid gold;
+            top: 250px;
+            left: 50px;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50px;
+            background-color: rgb(245, 244, 215);
+            font-family: 'Jua';
+            color: chocolate;
+            font-size: 1.5em;
+        }
+        #btn1{
+            background-color: antiquewhite;
+            box-shadow: 5px 5px 3px gray;
+            cursor: pointer;
+        }
+        .sboxbtn1,.sboxbtn2{
+            background-color: antiquewhite;
+            box-shadow: 5px 5px 3px gray;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .sboxbtn1:hover,.sboxbtn2:hover{
+            color: rgb(126, 124, 32);
+        }
+        
+    </style>
+
+
+</head>
+<body>
+    <div id="bbox">
+        <div id="fbox">
+            <button type="button" id="btn1" width="100">영화 예매</button>
+        </div>
+        <div id="sbox"></div>
+        <div id="tbox"></div>
+        <div id="lbox"></div>
+    </div>
+
+    <script>
+        $("#btn1").click(function(){
+            var s="<button type='button' class='sboxbtn1'>극장 선택</button>";
+            s+="<button type='button' class='sboxbtn2'>영화 선택</button>";
+            $("#sbox").append(s);
+        });
+
+        $(document).on("click",".sboxbtn1",function(){
+            $("#tbox").empty();
+            var s="<br>";
+            s+="<div class='cinema1'>CGV 강남점</div>";
+            s+="<br>";
+            s+="<div class='cinema2'>MEGABOX 강남점</div>";
+            s+="<br>";
+            s+="<div class='cinema3'>CGV 교보타워점</div>";
+
+            $("#tbox").append(s);
+        });
+        $(document).on("click",".cinema1",function(){
+            $("#lbox").empty();
+            var s="<br>";
+            s+="영화관 : CGV 강남점";
+            $("#lbox").append(s);
+        });
+        $(document).on("click",".cinema2",function(){
+            $("#lbox").empty();
+            var s="<br>";
+            s+="영화관 : MEGABOX 강남점";
+            $("#lbox").append(s);
+        });
+        $(document).on("click",".cinema3",function(){
+            $("#lbox").empty();
+            var s="<br>";
+            s+="영화관 : CGV 교보타워점";
+            $("#lbox").append(s);
+        });
+
+
+        $(document).on("click",".sboxbtn2",function(){
+            $("#tbox").empty();
+            var s="<br>";
+            s+="<div class='title1'>킹스맨: 퍼스트 에이전트</div>";
+            s+="<br>";
+            s+="<div class='title2'>돈 룩 업</div>";
+            s+="<br>";
+            s+="<div class='title3'>스파이더맨: 노 웨이 홈</div>";
+            
+            $("#tbox").append(s);
+        });
+
+        $(document).on("click",".title1",function(){
+            var s="<br>";
+            s+="영화 : 킹스맨: 퍼스트 에이전트";
+            $("#lbox").append(s);
+        });
+        $(document).on("click",".title2",function(){
+            var s="<br>";
+            s+="영화 : 돈 룩 업";
+            $("#lbox").append(s);
+        });
+        $(document).on("click",".title3",function(){
+            var s="<br>";
+            s+="영화 : 스파이더맨: 노 웨이 홈";
+            $("#lbox").append(s);
+        });
+
+
+        // parent() : 부모태그
+        // siblings() : 형제태그
+        // children(),find() : 자식태그
+        // next() : 바로 다음 태그
+        // prev() : 바로 이전 태그
+    </script>
+</body>
+</html>

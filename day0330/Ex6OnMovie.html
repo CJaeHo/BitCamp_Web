@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
+    <style>
+        button{
+            width: 150px;
+            height: 40px;
+            border-radius: 20px;
+            font-size: 1.5em;
+            font-family: 'Gamja Flower';
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button.a{
+            background-color: #2e8b57;
+            counter-reset: #fff;
+        }
+        button.b{
+            background-color: #db7093;
+            color: #000;
+        }
+
+        div{
+            position: absolute;
+            width: 300px;
+            height: 150px;
+            font-size: 20px;
+            font-family: 'Jua';
+            /* border: 1px solid #ccc; */
+            text-align: center;
+        }
+        #one{
+            left: 50px;
+            top: 100px;
+        }
+        #two{
+            left: 400px;
+            top: 100px;
+        }
+        #three{
+            left: 750px;
+            top: 100px;
+        }
+        #four{
+            font-size: 17px;
+            left: 1200px;
+            top: 100px;
+        }
+        #result{
+            left: 80px;
+            top: 400px;
+            font-size: 30px;
+            text-align: center;
+            width: 1000px;
+            border: 3px solid gold;
+            border-radius: 30px;
+            padding-top: 20px;
+        }
+        #three h3:hover{
+            cursor: pointer;
+            background-color: orange;
+            color: blue;
+            font-weight: bold;
+        }
+            
+    </style>
+
+    <script>
+        var theater="", movie="", time="", inwon="";
+        $(function(){
+            var b="<button type='button' class='a'>영화 예매</button>";
+            $("#one").append(b);
+
+            // 영화 예매 이벤트
+            $("button.a").click(function(){
+                var b="<button type='button' class='b' id='btn1'>극장 선택</button>";
+                b+="<button type='button' class='b' id='btn2'>영화 선택</button>";
+                // class로 준건 style 뭉치고, id로 준건 버튼으로 쓰면 편하겠네...
+                $("#two").html(b);
+            }); 
+
+            // 극장 선택 이벤트
+            $(document).on("click","#btn1",function(){
+                var s="<h3 class='theater'>CGV 강남점</h3>";
+                s+="<h3 class='theater'>MEGABOX 강남점</h3>";
+                s+="<h3 class='theater'>CGV 교보타워점</h3>";
+                $("#three").html(s);
+            });
+            // 영화 선택 이벤트
+            $(document).on("click","#btn2",function(){  // 처음부터 있는게 아니니까 document 주기
+                var s="<h3 class='movie'>모가디슈</h3>";
+                s+="<h3 class='movie'>씽크홀점</h3>";
+                s+="<h3 class='movie'>나홀로 집에</h3>";
+                $("#three").html(s);
+            });
+
+            // h3 이벤트(극장,영화 선택시 출력)     // 전역변수 사용하기
+            $(document).on("click","#three h3",function(){
+                // 클릭한 h3에서 class명 추출
+                var c=$(this).attr("class");
+                if(c=='theater'){
+                    theater="극장명 : "+$(this).text();
+                }
+                else{   // 영화 제목 클릭하면 발생하는거라서 동시에 시간도 출력하게
+                    movie="영화 제목 : "+$(this).text();
+
+                    // 시간 추가
+                    var times=["09:00","12:00","15:00","23:30"];
+                    var tag="";
+                    // 배열일 때 반복문 $.each
+                    $.each(times,function(idx,data){
+                        tag+="<input type='radio' name='time' value='"+data+"'>"
+                            +data+"<br>";
+                    });
+
+                    tag+="<br><br>";
+                    tag+="<input type='number' min=1 max=5 value=0 id='inwon'>";
+                    // number 타입은 최대와 최소를 정해서 1씩 증감하는 버튼이 있는거
+                    $("#four").html(tag);
+                }
+                // 출력
+                $("#result").html(theater+"<br>"+movie+"<br>"+time+"<br>"+inwon);
+            });
+
+            // 시간 선택시 이벤트
+            $(document).on("click","input[name='time']",function(){
+                time="상영시간 : "+$(this).val();
+                // 출력
+                $("#result").html(theater+"<br>"+movie+"<br>"+time+"<br>"+inwon);
+            });
+
+            // 인원 변경 시
+            $(document).on("change","#inwon",function(){
+                inwon="인원 수 : "+$(this).val()+"명";
+                // 출력
+                $("#result").html(theater+"<br>"+movie+"<br>"+time+"<br>"+inwon);
+            });
+        });
+    </script>
+</head>
+<body>
+    
+    <div id="one"></div>
+    <div id="two"></div>
+    <div id="three"></div>
+    <div id="four"></div>
+    <div id="result"></div>
+
+</body>
+</html>

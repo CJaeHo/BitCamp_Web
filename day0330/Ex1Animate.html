@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Jua&family=Lobster&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+</head>
+<body>
+    <button type="button">애니메이션 #1</button>
+    <button type="button">애니메이션 #2</button>
+    <div id="box1"></div>
+
+    <script>
+        $("#box1").css({
+           "width":"100px",
+           "height":"100px",
+           "border":"1px solid red" 
+        });
+
+        $("button:eq(0)").click(function(){
+            $("#box1").animate({"width":"+=100px","borderWidth":"20px",
+                "opacity":"0.2","marginLeft":"300px"},3000);    // 3000은 3초
+        });
+        $("button:eq(1)").click(function(){
+            $("#box1").animate({"width":"100px","borderWidth":"1px",
+                "opacity":"1","marginLeft":"0px"},3000);    // 3000은 3초
+        });
+    </script>
+
+    <img src="../img/ani09.gif">
+    <script>
+        $("img").animate({"marginLeft":"+=200px"},3000);
+    </script>
+
+</body>
+</html>
